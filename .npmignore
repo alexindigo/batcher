@@ -1,0 +1,11 @@
+.editorconfig
+.eslint
+.istanbul.yml
+.travis.yml
+
+*.log
+
+coverage/
+node_modules/
+
+test.js

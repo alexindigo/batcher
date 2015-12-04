@@ -1,0 +1,53 @@
+{
+  "name": "batcher",
+  "version": "1.0.0",
+  "description": "Batch processor of shell commands and javascript functions over shared state object. Async, sequential, parallel.",
+  "main": "index.js",
+  "scripts": {
+    "test": "istanbul cover test.js",
+    "lint": "eslint *.js lib/*.js tests/*.js",
+    "debug": "node test.js",
+    "check": "istanbul check-coverage coverage/coverage.json"
+  },
+  "pre-commit": [
+    "lint",
+    "test",
+    "check"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexindigo/batcher.git"
+  },
+  "keywords": [
+    "batch",
+    "process",
+    "shell",
+    "commands",
+    "shared",
+    "state",
+    "exec",
+    "async",
+    "sequential",
+    "parallel"
+  ],
+  "author": "Alex Indigo <iam@alexindigo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/alexindigo/batcher/issues"
+  },
+  "homepage": "https://github.com/alexindigo/batcher#readme",
+  "devDependencies": {
+    "coveralls": "^2.11.4",
+    "eslint": "^1.10.3",
+    "intercept-stdout": "^0.1.2",
+    "istanbul": "^0.4.1",
+    "pre-commit": "^1.1.2"
+  },
+  "dependencies": {
+    "cartesian": "^1.0.0",
+    "executioner": "^1.0.1",
+    "lodash.partial": "^3.1.1",
+    "once": "^1.3.3",
+    "xtend": "^4.0.1"
+  }
+}

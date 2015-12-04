@@ -1,0 +1,129 @@
+module.exports =
+{
+  /**
+   * Handles initial state report
+   *
+   * @param   {object} state - current state
+   * @returns {void}
+   */
+  init: function(state)
+  {
+    console.log('# Started batch process\n');
+    console.log('## Initial State:\n');
+    console.log('```');
+    console.log(JSON.stringify(state, null, 2));
+    console.log('```');
+  },
+
+  /**
+   * Handles reports with starting command's execution
+   *
+   * @param   {object} state - current state
+   * @param   {string} command - string representation of the command
+   * @returns {void}
+   */
+  start: function(state, command)
+  {
+    console.log('\n### Executing `', command, '`...\n');
+  },
+
+  /**
+   * Handles reports with command's errors
+   *
+   * @param   {object} state - current state
+   * @param   {string} command - string representation of the command
+   * @param   {object} error - error returned by the command's execution
+   * @returns {void}
+   */
+  error: function(state, command, error)
+  {
+    console.log('> Failed to execute `', command, '`:');
+    console.log('```');
+    console.log(JSON.stringify(error, null, 2));
+    console.log('```');
+  },
+
+  killed: function(state, command)
+  {
+    console.log('\n~~ Command `', command, '` has been terminated. ~~');
+  },
+
+  /**
+   * Handles reports with command's output
+   *
+   * @param   {object} state - current state
+   * @param   {string} command - string representation of the command
+   * @param   {array|string|undefined} output - command's output
+   * @returns {void}
+   */
+  output: function(state, command, output)
+  {
+    console.log('> Finished execution of `', command, '`:');
+    if (!Array.isArray(output)) output = [output];
+    console.log('```');
+    console.log(output.map(format).join('\n'));
+    console.log('```');
+  },
+
+  /**
+   * Handles reports with storing output data within state
+   *
+   * @param   {object} state - current state
+   * @param   {string} command - string representation of the command
+   * @param   {string} key - state's property key
+   * @returns {void}
+   */
+  store: function(state, command, key)
+  {
+    console.log('> Storing output into `', key, '`\n');
+  },
+
+  /**
+   * Handles reports with starting command's execution
+   *
+   * @param   {object} state - final state
+   * @param   {object|null} error - optional error object
+   * @returns {void}
+   */
+  done: function(state, error)
+  {
+    if (error)
+    {
+      console.log('\n## Finished with errors:\n');
+      console.log('```');
+      console.log(JSON.stringify(error, null, 2));
+      console.log('```');
+    };
+
+    console.log('\n## Final State:\n');
+    console.log('```');
+    console.log(JSON.stringify(state, null, 2));
+    console.log('```');
+  }
+};
+
+/**
+ * Formats provided variable into a string, ready for console
+ *
+ * @param   {mixed} obj – object to format
+ * @returns {string} - formatted string
+ */
+function format(obj)
+{
+  var output;
+
+  if (typeof obj == 'object')
+  {
+    output = JSON.stringify(obj);
+  }
+  else if (typeof obj != 'undefined')
+  {
+    output = obj.toString();
+  }
+  else
+  {
+    output = '';
+  }
+
+  return output;
+}
