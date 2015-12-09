@@ -292,7 +292,6 @@ function run(command, state, callback)
       break;
 
     default:
-      // TODO: make it a callback
       error.message = 'Unsupported command type: [' + (typeof command) + '] ' + command;
       callback(error);
       return;
