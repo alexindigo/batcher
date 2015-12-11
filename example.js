@@ -101,5 +101,5 @@ batcher({
   batcher.forEach('listOfStuff').command('echo "read from list: ${listOfStuff}"'),
 
   // execute a command with custom options
-  {files: 'ls | wc -l', options: {cwd: __dirname + '/tests'}},
+  {files: 'ls | wc -l', options: {cwd: __dirname + '/tests'}}
 ]);

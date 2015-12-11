@@ -29,7 +29,7 @@ module.exports =
 
     batcher.command(['echo ${letters}', 'echo ${result}']),
 
-    batcher.forEach('combos').command('echo ${name} has ${known} ${secret}'),
+    batcher.forEach('combos').command('echo ${name} has ${known} ${secret}')
   ],
 
   expected: '# Started batch process\n\

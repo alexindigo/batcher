@@ -35,7 +35,7 @@ var customReporter =
       if (error)
       {
         console.log('last error:', error);
-      };
+      }
 
       console.log('done:', state);
     }
