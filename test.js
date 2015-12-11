@@ -3,9 +3,9 @@ var assert          = require('assert')
   , intercept       = require('intercept-stdout')
   , batcher         = require('./')
   , defaultReporter = require('./default_reporter.js')
+  , augmentCallback = require('./lib/augmenter.js')
   , testCases
   ;
-
 
 // require test cases
 testCases =
@@ -35,10 +35,12 @@ runTests(testCases);
  */
 function runTests(tests)
 {
-  var test = tests.shift()
+  var test    = tests.shift()
     , subject = batcher
     , output  = ''
     , unintercept
+    , unaugment
+    , customCb
     ;
 
   if (!test)
@@ -71,91 +73,59 @@ function runTests(tests)
   // add `batch` array, should be provided
   subject = partial(subject, test.batch);
 
+  // hook into reporter or batch callback
+  customCb = function(result)
+  {
+    // stop intercepting output
+    unintercept();
+
+    // reset error exitCode
+    // to prevent error testing from messing things up
+    process.exitCode = 0;
+
+    // compare results
+    try
+    {
+      assert.equal(output, test.expected);
+    }
+    catch (e)
+    {
+      console.log('\n------- failed test -------');
+      console.log(test);
+      console.log('------- /failed test -------\n');
+
+      console.log('\n------- output -------');
+      console.log(output);
+      console.log('------- /output -------\n');
+
+      console.log('\n------- expected -------');
+      console.log(test.expected);
+      console.log('------- /expected -------\n');
+
+      assert.fail(output, test.expected, undefined, '==');
+    }
+
+    // proceed to the next one
+    runTests(tests);
+
+    return result;
+  };
+
   // add optional `callback` property if provided
   if (test.callback)
   {
-    subject = partial(subject, augmentCallback(test.callback, function()
-    {
-      // stop intercepting output
-      unintercept();
-
-      // reset error exitCode
-      // to prevent error testing from messing things up
-      process.exitCode = 0;
-
-      console.log('\n\n ------------------------- actual --------------------------');
-      console.log(output);
-      console.log('-------------------------------------------------- \n\n');
-
-// console.log('\n\n ------------------------- expected -------------------------');
-// console.log(test.expected);
-// console.log('-------------------------------------------------- \n\n');
-
-      // compare results
-      assert.equal(output, test.expected);
-
-      // proceed to the next one
-      runTests(tests);
-    }));
+    unaugment = augmentCallback(test, 'callback', customCb);
+    subject = partial(subject, test.callback);
   }
+  // augment custom reporter if provided
   else if (test.state && test.state.options && test.state.options.reporter)
   {
-    test.state.options.reporter.done = augmentCallback(test.state.options.reporter.done, function()
-    {
-      // stop intercepting output
-      unintercept();
-
-      // reset error exitCode
-      // to prevent error testing from messing things up
-      process.exitCode = 0;
-
-      console.log('\n\n ------------------------- HERE actual --------------------------');
-      console.log(output);
-      console.log('-------------------------------------------------- \n\n');
-
-// console.log('\n\n ------------------------- HERE expected -------------------------');
-// console.log(test.expected);
-// console.log('-------------------------------------------------- \n\n');
-
-      // compare results
-      assert.equal(output, test.expected);
-
-      // return everything back to normal
-      test.state.options.reporter.done = test.state.options.reporter.done._original;
-
-      // proceed to the next one
-      runTests(tests);
-    });
+    unaugment = augmentCallback(test.state.options.reporter, 'done', customCb);
   }
+  // or built-in done handler
   else
   {
-    // or augment built-in done handler
-    defaultReporter.done = augmentCallback(defaultReporter.done, function()
-    {
-      // stop intercepting output
-      unintercept();
-
-      // reset error exitCode
-      // to prevent error testing from messing things up
-      process.exitCode = 0;
-
-      console.log('\n\n ------------------------- actual --------------------------');
-      console.log(output);
-      console.log('-------------------------------------------------- \n\n');
-
-// console.log('\n\n ------------------------- expected -------------------------');
-// console.log(test.expected);
-// console.log('-------------------------------------------------- \n\n');
-
-      // compare results
-      assert.equal(output, test.expected);
-
-      // return everything back to normal
-      defaultReporter.done = defaultReporter.done._original;
-
-      // proceed to the next one
-      runTests(tests);
-    });
+    unaugment = augmentCallback(defaultReporter, 'done', customCb);
   }
 
   // execute test subject
@@ -168,6 +138,8 @@ function runTests(tests)
   {
     // stop intercepting output
     unintercept();
+    // revert callback augmentation
+    unaugment();
 
     // test doesn't expect exceptions
     // or it's not the one it's looking for
@@ -177,45 +149,7 @@ function runTests(tests)
       throw e;
     }
 
-    // cleaning up leftovers
-    if (defaultReporter.done._original)
-    {
-      defaultReporter.done = defaultReporter.done._original;
-    }
-
-    if (test.state && test.state.options && test.state.options.reporter && test.state.options.reporter.done._original)
-    {
-      test.state.options.reporter.done = test.state.options.reporter.done._original;
-    }
-
     // proceed to the next one
     runTests(tests);
   }
-}
-
-/**
- * Augments provided callback
- * to invoke custom hook after
- * original callback invocation
- * but before passing control
- *
- * @param   {function} subjectCb - callback function to augment
- * @param   {function} hookCb - hook callback to add to the chain
- * @returns {function} - augmented callback function
- */
-function augmentCallback(subjectCb, hookCb)
-{
-  var augmented = function()
-  {
-    var result = subjectCb.apply(this, arguments);
-
-    hookCb.call(this, arguments);
-
-    return result;
-  };
-
-  // store original version
-  augmented._original = subjectCb;
-
-  return augmented;
 }

@@ -69,7 +69,7 @@ module.exports =
         killed: [Function],\n\
         output: [Function],\n\
         store: [Function],\n\
-        done: [Object] } } }\n\
+        done: [Function] } } }\n\
 start: echo A\n\
 output: echo A A\n\
 start: echo ABC\n\
@@ -93,7 +93,7 @@ done: { options: \n\
         killed: [Function],\n\
         output: [Function],\n\
         store: [Function],\n\
-        done: [Object] } },\n\
+        done: [Function] } },\n\
   user: \'alex\' }\n\
 '
 };
