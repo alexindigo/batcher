@@ -81,6 +81,27 @@ batcher({
     }.bind(this));
   },
 
+  // execute commands with common prefix
+  // e.g. `ssh my-server`
+
+  // all following shell commands will prepended with this prefix
+  {options: {cmdPrefix: 'echo with-prefix'}},
+
+  'echo cmd1',
+
+  ['echo cmd2-1', 'echo cmd2-2'],
+
+  {storingInState: 'echo cmd3'},
+
+  // sequential command series
+  [['echo cmd4-1', 'echo cmd4-2']],
+
+  // prefixed output with prefixed command
+  [{output1: 'cmd5-1', output2: 'cmd5-2'}],
+
+  // reset command prefix
+  {options: {cmdPrefix: null}},
+
   // execute command from state object
   {result: batcher.command('hook') },
 

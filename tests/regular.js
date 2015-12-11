@@ -1,4 +1,4 @@
-var numberOfTestFiles = 13;
+var numberOfTestFiles = 14;
 
 module.exports =
 {

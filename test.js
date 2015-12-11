@@ -12,6 +12,7 @@ testCases =
 [
   require('./tests/simple.js'),
   require('./tests/regular.js'),
+  require('./tests/prefixed_command.js'),
   require('./tests/commands.js'),
   require('./tests/values.js'),
   require('./tests/async_parallel.js'),

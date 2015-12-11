@@ -184,6 +184,52 @@ updated to string
 augmented result from custom function: __v0.12.4__ + __2.10.1__
 ```
 
+### Executing ` echo cmd1 ` with `echo with-prefix` prefix...
+
+> Finished execution of ` echo cmd1 ` with `echo with-prefix` prefix:
+```
+with-prefix echo cmd1
+```
+
+### Executing ` echo cmd2-1 ` with `echo with-prefix` prefix...
+
+
+### Executing ` echo cmd2-2 ` with `echo with-prefix` prefix...
+
+> Finished execution of ` echo cmd2-1 ` with `echo with-prefix` prefix:
+```
+with-prefix echo cmd2-1
+```
+> Finished execution of ` echo cmd2-2 ` with `echo with-prefix` prefix:
+```
+with-prefix echo cmd2-2
+```
+
+### Executing ` echo cmd3 ` with `echo with-prefix` prefix...
+
+> Storing output into ` storingInState `
+
+> Finished execution of ` echo cmd3 ` with `echo with-prefix` prefix:
+```
+with-prefix echo cmd3
+```
+
+### Executing ` [echo cmd4-1, echo cmd4-2] ` with `echo with-prefix` prefix...
+
+> Finished execution of ` [echo cmd4-1, echo cmd4-2] ` with `echo with-prefix` prefix:
+```
+with-prefix echo cmd4-1
+with-prefix echo cmd4-2
+```
+
+### Executing ` {"output1":"cmd5-1","output2":"cmd5-2"} ` with `echo with-prefix` prefix...
+
+> Finished execution of ` {"output1":"cmd5-1","output2":"cmd5-2"} ` with `echo with-prefix` prefix:
+```
+output1: with-prefix cmd5-1
+output2: with-prefix cmd5-2
+```
+
 ### Executing ` echo "<${user}> with node: ${node}" `...
 
 > Storing output into ` result `
@@ -251,7 +297,7 @@ read from list: Ddddd
 
 > Finished execution of ` ls | wc -l `:
 ```
-12
+13
 ```
 
 ## Final State:
@@ -260,7 +306,8 @@ read from list: Ddddd
 {
   "options": {
     "cwd": "/Users/alex/Sites/batcher/tests",
-    "verbose": true
+    "verbose": true,
+    "cmdPrefix": null
   },
   "deploy": [
     "echo \"pushing A to ${cdn}:${dir}:${file}\"",
@@ -283,6 +330,7 @@ read from list: Ddddd
     "3"
   ],
   "custom": "__v0.12.4__ + __2.10.1__",
+  "storingInState": "with-prefix echo cmd3",
   "result": "<alex> with node: v0.12.4",
   "customCommandOverCombo": [
     "image1 and file1",
@@ -296,6 +344,6 @@ read from list: Ddddd
     "Cccc",
     "Ddddd"
   ],
-  "files": "12"
+  "files": "13"
 }
 ```
