@@ -8,7 +8,7 @@ Batch processor of shell commands and javascript functions over shared state obj
 
 ## Why
 
-Some tasks ...
+Some tasks better implemented using shell commands, some tasks require nodejs power, this module allows to bring them together in a simple, yet powerful "batch" script and combine via shared state object.
 
 ## Features
 
@@ -17,6 +17,8 @@ Some tasks ...
 - Allows to update state with output from shell commands.
 - Allows for parallel execution of the commands.
 - Accepts custom (*sync and async*) functions as tasks.
+- Provides markdown-compatible default reporter.
+- Natively supports custom reporters.
 
 ## Install
 
