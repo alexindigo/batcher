@@ -8,7 +8,7 @@ Batch processor of shell commands and javascript functions over shared state obj
 
 ## Why
 
-Some tasks better implemented using shell commands, some tasks require nodejs power, this module allows to bring them together in a simple, yet powerful "batch" script and combine via shared state object.
+Some tasks (e.g. deploy scripts) better implemented using shell commands, some tasks require nodejs power, this module allows to bring them together in a simple, yet powerful "batch" script and combine via shared state object.
 
 ## Features
 
