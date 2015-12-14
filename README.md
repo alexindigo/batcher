@@ -68,7 +68,7 @@ batcher({
 
 Outputs (*with default reporter*):
 
-``````markdown
+````markdown
 # Started batch process
 
 ## Initial State:
@@ -145,7 +145,7 @@ ABC + AB
   "twoWords": "ABC + ABC"
 }
 ```
-``````
+````
 
 For more examples check out [`example.js`](example.js).
 
