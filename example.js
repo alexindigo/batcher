@@ -64,7 +64,7 @@ batcher({
   // but array get's executed
   {newList: ['echo 1', 'echo 2', 'echo 3']},
 
-  // function run with state context
+  // async function run with state context
   // with few helper methods
   function(cb)
   {
@@ -79,6 +79,12 @@ batcher({
 
       cb(null, 'augmented result from custom function: ' + data);
     }.bind(this));
+  },
+
+  // sync function
+  function()
+  {
+    return 'ABC + ' + this.custom + ' + XYZ';
   },
 
   // execute commands with common prefix

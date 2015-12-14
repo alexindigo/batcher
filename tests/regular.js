@@ -1,4 +1,4 @@
-var numberOfTestFiles = 14;
+var numberOfTestFiles = 15;
 
 module.exports =
 {
@@ -24,17 +24,39 @@ module.exports =
 
     {numTestSuites: 'ls | wc -l', options: {cwd: 'tests/'}},
 
+    // --- sync functions
+
+    // check state assignment
+    function()
+    {
+      this.custom = 13;
+      return 'Assigned 13 to `this.custom`';
+    },
+
+    // check return value
+    {internal: function()
+    {
+      return this.custom * 2;
+    }},
+
+    // empty response functions ok too
+    function()
+    {
+    },
+
+    // --- async functions
+
     // check state assignment
     function(cb)
     {
-      this.custom = 42;
-      cb(null, 'Assigned 42 to `this.custom`');
+      this.acustom = 42;
+      cb(null, 'Assigned 42 to `this.acustom`');
     },
 
     // check exposed (internal) methods
     function(cb)
     {
-      this.run('echo ${custom}', function(err, data)
+      this.run('echo ${acustom}', function(err, data)
       {
         cb(err, data ? 'internal: ' + data : null);
       });
@@ -116,23 +138,46 @@ xxx-test-zzz\n\
 ' + numberOfTestFiles + '\n\
 ```\n\
 \n\
-### Executing ` CUSTOM FUNCTION `...\n\
+### Executing ` CUSTOM SYNC FUNCTION `...\n\
 \n\
-> Finished execution of ` CUSTOM FUNCTION `:\n\
+> Finished execution of ` CUSTOM SYNC FUNCTION `:\n\
 ```\n\
-Assigned 42 to `this.custom`\n\
+Assigned 13 to `this.custom`\n\
 ```\n\
 \n\
-### Executing ` CUSTOM FUNCTION `...\n\
+### Executing ` CUSTOM SYNC FUNCTION `...\n\
 \n\
-> Finished execution of ` CUSTOM FUNCTION `:\n\
+> Storing output into ` internal `\n\
+\n\
+> Finished execution of ` CUSTOM SYNC FUNCTION `:\n\
+```\n\
+26\n\
+```\n\
+\n\
+### Executing ` CUSTOM SYNC FUNCTION `...\n\
+\n\
+> Finished execution of ` CUSTOM SYNC FUNCTION `:\n\
+```\n\
+\n\
+```\n\
+\n\
+### Executing ` CUSTOM ASYNC FUNCTION `...\n\
+\n\
+> Finished execution of ` CUSTOM ASYNC FUNCTION `:\n\
+```\n\
+Assigned 42 to `this.acustom`\n\
+```\n\
+\n\
+### Executing ` CUSTOM ASYNC FUNCTION `...\n\
+\n\
+> Finished execution of ` CUSTOM ASYNC FUNCTION `:\n\
 ```\n\
 internal: 42\n\
 ```\n\
 \n\
-### Executing ` CUSTOM FUNCTION `...\n\
+### Executing ` CUSTOM ASYNC FUNCTION `...\n\
 \n\
-> Finished execution of ` CUSTOM FUNCTION `:\n\
+> Finished execution of ` CUSTOM ASYNC FUNCTION `:\n\
 ```\n\
 \n\
 ```\n\
@@ -144,5 +189,7 @@ DONE { never: undefined,\n\
   field: \'value\',\n\
   options: { cwd: \'tests/\' },\n\
   numTestSuites: \'' + numberOfTestFiles + '\',\n\
-  custom: 42 }\n\
+  custom: 13,\n\
+  internal: 26,\n\
+  acustom: 42 }\n\
 '};

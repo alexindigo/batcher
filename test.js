@@ -23,6 +23,7 @@ testCases =
   require('./tests/error_state.js'),
   require('./tests/error_parallel.js'),
   require('./tests/error_async.js'),
+  require('./tests/error_sync.js'),
   require('./tests/custom_reporter.js')
 ];
 

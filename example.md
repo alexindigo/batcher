@@ -100,11 +100,11 @@ node: v0.12.4
 npm: 2.10.1
 ```
 
-### Executing ` CUSTOM FUNCTION `...
+### Executing ` CUSTOM ASYNC FUNCTION `...
 
 > Storing output into ` hook `
 
-> Finished execution of ` CUSTOM FUNCTION `:
+> Finished execution of ` CUSTOM ASYNC FUNCTION `:
 ```
 echo "<${user}> with node: ${node}"
 ```
@@ -177,11 +177,18 @@ updated to string
 3
 ```
 
-### Executing ` CUSTOM FUNCTION `...
+### Executing ` CUSTOM ASYNC FUNCTION `...
 
-> Finished execution of ` CUSTOM FUNCTION `:
+> Finished execution of ` CUSTOM ASYNC FUNCTION `:
 ```
 augmented result from custom function: __v0.12.4__ + __2.10.1__
+```
+
+### Executing ` CUSTOM SYNC FUNCTION `...
+
+> Finished execution of ` CUSTOM SYNC FUNCTION `:
+```
+ABC + __v0.12.4__ + __2.10.1__ + XYZ
 ```
 
 ### Executing ` echo cmd1 ` with `echo with-prefix` prefix...
@@ -297,7 +304,7 @@ read from list: Ddddd
 
 > Finished execution of ` ls | wc -l `:
 ```
-13
+15
 ```
 
 ## Final State:
@@ -344,6 +351,6 @@ read from list: Ddddd
     "Cccc",
     "Ddddd"
   ],
-  "files": "13"
+  "files": "15"
 }
 ```

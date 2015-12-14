@@ -9,6 +9,7 @@ var extend      = require('xtend/immutable')
   , mixin       = require('./lib/mixin.js')
   , report      = require('./lib/report.js')
   , runCommand  = require('./lib/run_command.js')
+  , runFunction = require('./lib/run_function.js')
   , stateMethods
   ;
 
@@ -270,7 +271,6 @@ function run(command, state, callback)
     , cb
     , runner
     , terminator
-    , terminatorKey
     , control
     ;
 
@@ -278,17 +278,12 @@ function run(command, state, callback)
   switch (typeof command)
   {
     case 'function':
-      runner     = command.bind(state);
-      // make it as function proxy
-      // (to keep code saner)
-      // function to call with a function returned by the command
-      terminator = Function.prototype.call.bind(Function.prototype.call);
+      runner = runFunction;
       break;
 
     case 'string':
     case 'object':
-      runner     = runCommand.bind(state, {}, command);
-      terminator = runCommand.terminate;
+      runner = runCommand;
       break;
 
     default:
@@ -298,21 +293,16 @@ function run(command, state, callback)
   }
 
   // make sure it called only once
-  cb = once(asyncCallback(callback));
+  cb = once(callback);
 
-  // runner would return terminator key
-  // - in case of `executioner` it will be job object
-  // supplied to the `executioner.terminate` will terminate
-  // ongoing job.
-  // - in case of custom function it will be termination function
-  // returned by the custom function or not, invoked it will
-  // signal ongoing custom function to stop what it's doing.
-  terminatorKey = runner(cb);
+  // runner would return terminator function,
+  // invoked it will signal ongoing task to stop what it's doing.
+  terminator = runner.call(state, {}, command, cb);
 
   control =
   {
     callback  : cb,
-    terminator: partial(terminator, terminatorKey || function(){})
+    terminator: terminator
   };
 
   return control;
@@ -344,26 +334,4 @@ function cleanWaiters(state)
 
     delete list[job];
   });
-}
-
-/**
- * Makes sure provided callback
- * invoked in real async way
- *
- * @param   {function} callback - callback function to invoke
- * @returns {function} - async-supplemented callback function
- */
-function asyncCallback(callback)
-{
-  var async = function()
-  {
-    var context = this;
-    var args    = arguments;
-    process.nextTick(function()
-    {
-      callback.apply(context, args);
-    });
-  };
-
-  return async;
 }

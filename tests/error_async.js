@@ -16,11 +16,13 @@ module.exports =
     },
 
     // terminable function
-    function()
+    function(cb)
     {
       var id = setTimeout(function()
       {
         throw new Error('Should be cancelled.');
+
+        cb('will not get here');
       }, 1500);
 
       return function terminate()
@@ -54,10 +56,10 @@ A\n\
 ### Executing ` [sleep 1, error-here] `...\n\
 \n\
 \n\
-### Executing ` CUSTOM FUNCTION `...\n\
+### Executing ` CUSTOM ASYNC FUNCTION `...\n\
 \n\
 \n\
-### Executing ` CUSTOM FUNCTION `...\n\
+### Executing ` CUSTOM ASYNC FUNCTION `...\n\
 \n\
 > Finished execution of ` echo Z `:\n\
 ```\n\
@@ -75,9 +77,9 @@ Z\n\
 }\n\
 ```\n\
 \n\
-~~ Command ` CUSTOM FUNCTION ` has been terminated. ~~\n\
+~~ Command ` CUSTOM ASYNC FUNCTION ` has been terminated. ~~\n\
 \n\
-~~ Command ` CUSTOM FUNCTION ` has been terminated. ~~\n\
+~~ Command ` CUSTOM ASYNC FUNCTION ` has been terminated. ~~\n\
 \n\
 ## Finished with errors:\n\
 \n\

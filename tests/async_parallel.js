@@ -72,11 +72,11 @@ E\n\
 ### Executing ` sleep 1; echo Second `...\n\
 \n\
 \n\
-### Executing ` CUSTOM FUNCTION `...\n\
+### Executing ` CUSTOM ASYNC FUNCTION `...\n\
 \n\
 > Storing output into ` first `\n\
 \n\
-> Finished execution of ` CUSTOM FUNCTION `:\n\
+> Finished execution of ` CUSTOM ASYNC FUNCTION `:\n\
 ```\n\
 First\n\
 ```\n\
