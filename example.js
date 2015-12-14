@@ -39,7 +39,10 @@ batcher({
 
   // stores custom function output within state
   // creates hook command
-  {hook: function(cb){ cb(null, 'echo "<${user}> with node: ${node}"'); }},
+  {hook: function(){ return 'echo "<${user}> with node: ${node}"'; }},
+
+  // execute command from state object
+  {result: batcher.command('hook') },
 
   // modifying state directly in turn with commands
   'echo "1. ${myValue}"',
@@ -107,9 +110,6 @@ batcher({
 
   // reset command prefix
   {options: {cmdPrefix: null}},
-
-  // execute command from state object
-  {result: batcher.command('hook') },
 
   // loop over lists
   batcher.forEach({cdn: cdnServers, dir: '/dir', file: cdnFiles}).command('deploy'),

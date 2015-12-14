@@ -147,7 +147,7 @@ ABC + AB
 ```
 ````
 
-For more examples check out [`example.js`](example.js).
+For more examples check out [`example.js`](example.js) and [`example.md`](example.md) for default output.
 
 ## License
 

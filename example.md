@@ -103,13 +103,22 @@ node: v0.12.4
 npm: 2.10.1
 ```
 
-### Executing ` CUSTOM ASYNC FUNCTION `...
+### Executing ` CUSTOM SYNC FUNCTION `...
 
 > Storing output into ` hook `
 
-> Finished execution of ` CUSTOM ASYNC FUNCTION `:
+> Finished execution of ` CUSTOM SYNC FUNCTION `:
 ```
 echo "<${user}> with node: ${node}"
+```
+
+### Executing ` echo "<${user}> with node: ${node}" `...
+
+> Storing output into ` result `
+
+> Finished execution of ` echo "<${user}> with node: ${node}" `:
+```
+<alex> with node: v0.12.4
 ```
 
 ### Executing ` echo "1. ${myValue}" `...
@@ -240,15 +249,6 @@ output1: with-prefix cmd5-1
 output2: with-prefix cmd5-2
 ```
 
-### Executing ` echo "<${user}> with node: ${node}" `...
-
-> Storing output into ` result `
-
-> Finished execution of ` echo "<${user}> with node: ${node}" `:
-```
-<alex> with node: v0.12.4
-```
-
 ### Executing ` [echo "pushing A to ${cdn}:${dir}:${file}", echo "pushing B to ${cdn}:${dir}:${file}"] `...
 
 > Finished execution of ` [echo "pushing A to ${cdn}:${dir}:${file}", echo "pushing B to ${cdn}:${dir}:${file}"] `:
@@ -333,6 +333,7 @@ read from list: Ddddd
   "node": "v0.12.4",
   "npm": "2.10.1",
   "hook": "echo \"<${user}> with node: ${node}\"",
+  "result": "<alex> with node: v0.12.4",
   "myNewValue": 28,
   "newList": [
     "1",
@@ -341,7 +342,6 @@ read from list: Ddddd
   ],
   "custom": "__v0.12.4__ + __2.10.1__",
   "storingInState": "with-prefix echo cmd3",
-  "result": "<alex> with node: v0.12.4",
   "customCommandOverCombo": [
     "image1 and file1",
     "image1 and file2",
