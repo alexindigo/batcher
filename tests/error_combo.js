@@ -17,6 +17,9 @@ module.exports =
 {}\n\
 ```\n\
 \n\
+## Execution\n\
+\n\
+\n\
 ### Executing ` non-existent-combo-command `...\n\
 \n\
 > Failed to execute ` non-existent-combo-command `:\n\

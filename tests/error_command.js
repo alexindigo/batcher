@@ -15,6 +15,9 @@ module.exports =
 {}\n\
 ```\n\
 \n\
+## Execution\n\
+\n\
+\n\
 ### Executing ` non-existent-command `...\n\
 \n\
 > Failed to execute ` non-existent-command `:\n\

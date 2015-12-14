@@ -13,7 +13,8 @@
   "pre-commit": [
     "lint",
     "test",
-    "check"
+    "check",
+    "example"
   ],
   "repository": {
     "type": "git",

@@ -58,6 +58,9 @@ module.exports =
 }\n\
 ```\n\
 \n\
+## Execution\n\
+\n\
+\n\
 ### Executing ` echo "This is prehook command" `...\n\
 \n\
 > Finished execution of ` echo "This is prehook command" `:\n\

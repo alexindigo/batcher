@@ -13,6 +13,7 @@ module.exports =
     console.log('```');
     console.log(JSON.stringify(state, null, 2));
     console.log('```');
+    console.log('\n## Execution\n');
   },
 
   /**
