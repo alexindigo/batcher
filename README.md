@@ -68,7 +68,6 @@ batcher({
 
 Outputs (*with default reporter*):
 
-```markdown
     # Started batch process
 
     ## Initial State:
@@ -78,6 +77,9 @@ Outputs (*with default reporter*):
       "word": "ABC"
     }
     ```
+
+    ## Execution
+
 
     ### Executing ` echo A `...
 
@@ -145,7 +147,6 @@ Outputs (*with default reporter*):
       "twoWords": "ABC + ABC"
     }
     ```
-```
 
 For more examples check out [`example.js`](example.js) and [`example.md`](example.md) for default output.
 
