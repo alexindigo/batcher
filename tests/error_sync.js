@@ -11,8 +11,8 @@ module.exports =
     {
       setTimeout(function()
       {
-        cb(null, 'Should be cancelled');
-      }, 2000);
+        cb(null, 'Will be cancelled');
+      }, 2500);
     },
 
     // broken sync function

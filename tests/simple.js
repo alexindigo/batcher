@@ -10,7 +10,7 @@ module.exports =
 
     'echo xxx-${user}-zzz',
 
-    [['echo A', 'echo B'], ['echo X', 'echo Y', 'echo Z']]
+    [['echo A', 'echo B'], ['echo W', 'echo X', 'echo Y', 'echo Z']]
   ],
 
   expected: '# Started batch process\n\
@@ -65,15 +65,16 @@ xxx-alex-zzz\n\
 ### Executing ` [echo A, echo B] `...\n\
 \n\
 \n\
-### Executing ` [echo X, echo Y, echo Z] `...\n\
+### Executing ` [echo W, echo X, echo Y, echo Z] `...\n\
 \n\
 > Finished execution of ` [echo A, echo B] `:\n\
 ```\n\
 A\n\
 B\n\
 ```\n\
-> Finished execution of ` [echo X, echo Y, echo Z] `:\n\
+> Finished execution of ` [echo W, echo X, echo Y, echo Z] `:\n\
 ```\n\
+W\n\
 X\n\
 Y\n\
 Z\n\
