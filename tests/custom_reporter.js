@@ -58,7 +58,7 @@ module.exports =
 
     'echo xxx-${user}-zzz',
 
-    [['echo A', 'echo B'], ['echo X', 'echo Y', 'echo Z']]
+    [['echo A', 'echo B'], ['echo W', 'echo X', 'echo Y', 'echo Z']]
   ],
 
   expected: 'init: { options: \n\
@@ -82,9 +82,9 @@ output: echo alex alex\n\
 start: echo xxx-${user}-zzz\n\
 output: echo xxx-${user}-zzz xxx-alex-zzz\n\
 start: [echo A, echo B]\n\
-start: [echo X, echo Y, echo Z]\n\
+start: [echo W, echo X, echo Y, echo Z]\n\
 output: [echo A, echo B] [ \'A\', \'B\' ]\n\
-output: [echo X, echo Y, echo Z] [ \'X\', \'Y\', \'Z\' ]\n\
+output: [echo W, echo X, echo Y, echo Z] [ \'W\', \'X\', \'Y\', \'Z\' ]\n\
 done: { options: \n\
    { reporter: \n\
       { init: [Function],\n\
