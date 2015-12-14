@@ -68,84 +68,84 @@ batcher({
 
 Outputs (*with default reporter*):
 
-````markdown
-# Started batch process
+```markdown
+    # Started batch process
 
-## Initial State:
+    ## Initial State:
 
+    ```
+    {
+      "word": "ABC"
+    }
+    ```
+
+    ### Executing ` echo A `...
+
+    > Finished execution of ` echo A `:
+    ```
+    A
+    ```
+
+    ### Executing ` echo word is ${word} `...
+
+    > Finished execution of ` echo word is ${word} `:
+    ```
+    word is ABC
+    ```
+
+    ### Executing ` echo ${word} + ${word} `...
+
+    > Storing output into ` twoWords `
+
+    > Finished execution of ` echo ${word} + ${word} `:
+    ```
+    ABC + ABC
+    ```
+
+    ### Executing ` echo two words are ${twoWords} `...
+
+    > Finished execution of ` echo two words are ${twoWords} `:
+    ```
+    two words are ABC + ABC
+    ```
+
+    ### Executing ` echo Marco `...
+
+
+    ### Executing ` echo Polo `...
+
+    > Finished execution of ` echo Polo `:
+    ```
+    Polo
+    ```
+    > Finished execution of ` echo Marco `:
+    ```
+    Marco
+    ```
+
+    ### Executing ` CUSTOM SYNC FUNCTION `...
+
+    > Finished execution of ` CUSTOM SYNC FUNCTION `:
+    ```
+    ABC +
+    ```
+
+    ### Executing ` CUSTOM ASYNC FUNCTION `...
+
+    > Finished execution of ` CUSTOM ASYNC FUNCTION `:
+    ```
+    ABC + AB
+    ```
+
+    ## Final State:
+
+    ```
+    {
+      "word": "ABC",
+      "twoWords": "ABC + ABC"
+    }
+    ```
 ```
-{
-  "word": "ABC"
-}
-```
-
-### Executing ` echo A `...
-
-> Finished execution of ` echo A `:
-```
-A
-```
-
-### Executing ` echo word is ${word} `...
-
-> Finished execution of ` echo word is ${word} `:
-```
-word is ABC
-```
-
-### Executing ` echo ${word} + ${word} `...
-
-> Storing output into ` twoWords `
-
-> Finished execution of ` echo ${word} + ${word} `:
-```
-ABC + ABC
-```
-
-### Executing ` echo two words are ${twoWords} `...
-
-> Finished execution of ` echo two words are ${twoWords} `:
-```
-two words are ABC + ABC
-```
-
-### Executing ` echo Marco `...
-
-
-### Executing ` echo Polo `...
-
-> Finished execution of ` echo Polo `:
-```
-Polo
-```
-> Finished execution of ` echo Marco `:
-```
-Marco
-```
-
-### Executing ` CUSTOM SYNC FUNCTION `...
-
-> Finished execution of ` CUSTOM SYNC FUNCTION `:
-```
-ABC +
-```
-
-### Executing ` CUSTOM ASYNC FUNCTION `...
-
-> Finished execution of ` CUSTOM ASYNC FUNCTION `:
-```
-ABC + AB
-```
-
-## Final State:
-
-```
-{
-  "word": "ABC",
-  "twoWords": "ABC + ABC"
-}
-```
-````
 
 For more examples check out [`example.js`](example.js) and [`example.md`](example.md) for default output.
 
