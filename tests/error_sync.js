@@ -22,10 +22,6 @@ module.exports =
 
       // report error from within sync function
       throw 'Sync functions throw instead of passing error into callback.';
-
-      this.notHappened = 'Not really happened';
-
-      return 'Never goes out';
     }],
 
     'should not get here'
