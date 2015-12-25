@@ -94,7 +94,7 @@ module.exports =
       console.log('```');
       console.log(JSON.stringify(error, null, 2));
       console.log('```');
-    };
+    }
 
     console.log('\n## Final State:\n');
     console.log('```');

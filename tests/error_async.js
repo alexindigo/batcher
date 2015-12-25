@@ -16,13 +16,16 @@ module.exports =
     },
 
     // terminable function
-    function(cb)
+    // function needs to be defined with an argument
+    // to signal that it's async capable
+    // but eslint complaining
+    function(cb) //eslint-disable-line no-unused-vars
     {
       var id = setTimeout(function()
       {
         throw new Error('Should be cancelled.');
 
-        cb('will not get here');
+        // cb('will not get here');
       }, 1500);
 
       return function terminate()
