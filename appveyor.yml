@@ -14,7 +14,7 @@ install:
 test_script:
   - node --version
   - npm --version
-  - npm run compat
+  - npm run test
 build: off
 matrix:
   fast_finish: true
