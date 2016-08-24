@@ -4,9 +4,9 @@ module.exports =
 {
   state:
   {
-    'pre-hook': 'echo "This is prehook command"',
+    'pre-hook': 'echo This is prehook command',
 
-    'hook': 'echo "SUCCESS"',
+    'hook': 'echo SUCCESS',
 
     'letters': ['abc', 'xyz'],
 
@@ -21,9 +21,9 @@ module.exports =
 
     'echo expecting ${result}',
 
-    batcher.forEach({cdn: ['image1', 'image2']}).command('echo "pretend scp to ${cdn}"'),
+    batcher.forEach({cdn: ['image1', 'image2']}).command('echo pretend scp to ${cdn}'),
 
-    batcher.forEach([{cdn: 'here'}, {cdn: 'there'}]).command('echo "pretend scp to ${cdn}"'),
+    batcher.forEach([{cdn: 'here'}, {cdn: 'there'}]).command('echo pretend scp to ${cdn}'),
 
     batcher.forEach('letters').command('echo ${letters}'),
 
@@ -49,30 +49,30 @@ module.exports =
       "xyz"\n\
     ]\n\
   },\n\
-  "hook": "echo \\"SUCCESS\\"",\n\
+  "hook": "echo SUCCESS",\n\
   "letters": [\n\
     "abc",\n\
     "xyz"\n\
   ],\n\
-  "pre-hook": "echo \\"This is prehook command\\""\n\
+  "pre-hook": "echo This is prehook command"\n\
 }\n\
 ```\n\
 \n\
 ## Execution\n\
 \n\
 \n\
-### Executing ` echo "This is prehook command" `...\n\
+### Executing ` echo This is prehook command `...\n\
 \n\
-> Finished execution of ` echo "This is prehook command" `:\n\
+> Finished execution of ` echo This is prehook command `:\n\
 ```\n\
 This is prehook command\n\
 ```\n\
 \n\
-### Executing ` echo "SUCCESS" `...\n\
+### Executing ` echo SUCCESS `...\n\
 \n\
 > Storing output into ` result `\n\
 \n\
-> Finished execution of ` echo "SUCCESS" `:\n\
+> Finished execution of ` echo SUCCESS `:\n\
 ```\n\
 SUCCESS\n\
 ```\n\
@@ -84,17 +84,17 @@ SUCCESS\n\
 expecting SUCCESS\n\
 ```\n\
 \n\
-### Executing ` echo "pretend scp to ${cdn}" `...\n\
+### Executing ` echo pretend scp to ${cdn} `...\n\
 \n\
-> Finished execution of ` echo "pretend scp to ${cdn}" `:\n\
+> Finished execution of ` echo pretend scp to ${cdn} `:\n\
 ```\n\
 pretend scp to image1\n\
 pretend scp to image2\n\
 ```\n\
 \n\
-### Executing ` echo "pretend scp to ${cdn}" `...\n\
+### Executing ` echo pretend scp to ${cdn} `...\n\
 \n\
-> Finished execution of ` echo "pretend scp to ${cdn}" `:\n\
+> Finished execution of ` echo pretend scp to ${cdn} `:\n\
 ```\n\
 pretend scp to here\n\
 pretend scp to there\n\
@@ -141,12 +141,12 @@ bob has xyz\n\
       "xyz"\n\
     ]\n\
   },\n\
-  "hook": "echo \\"SUCCESS\\"",\n\
+  "hook": "echo SUCCESS",\n\
   "letters": [\n\
     "abc",\n\
     "xyz"\n\
   ],\n\
-  "pre-hook": "echo \\"This is prehook command\\"",\n\
+  "pre-hook": "echo This is prehook command",\n\
   "result": "SUCCESS"\n\
 }\n\
 ```\n\
