@@ -1,9 +1,12 @@
-# batcher
+# batcher [![NPM Module](https://img.shields.io/npm/v/batcher.svg?style=flat)](https://www.npmjs.com/package/batcher)
 
 Batch processor of shell commands and javascript functions over shared state object. Async, sequential, parallel.
 
 [![Build Status](https://img.shields.io/travis/alexindigo/batcher/master.svg?style=flat-square)](https://travis-ci.org/alexindigo/batcher)
 [![Coverage Status](https://img.shields.io/coveralls/alexindigo/batcher/master.svg?style=flat-square)](https://coveralls.io/github/alexindigo/batcher?branch=master)
+
+[![Dependency Status](https://img.shields.io/david/alexindigo/batcher/master.svg?style=flat)](https://david-dm.org/alexindigo/batcher)
+[![bitHound Overall Score](https://www.bithound.io/github/alexindigo/batcher/badges/score.svg)](https://www.bithound.io/github/alexindigo/batcher)
 
 *Notice of change of ownership: Starting version 1.0.0 this package has changed it's owner and goals. Old version (0.0.2) is still available on npm via `npm install batcher@0.0.2`. Thank you.*
 
@@ -24,7 +27,7 @@ Some tasks (e.g. deploy scripts) better implemented using shell commands, some t
 ## Install
 
 ```
-npm install batcher --save
+npm install --save batcher
 ```
 
 ## Examples
