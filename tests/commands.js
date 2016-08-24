@@ -29,7 +29,7 @@ module.exports =
 
     batcher.command(['echo ${letters}', 'echo ${result}']),
 
-    batcher.forEach('combos').command('echo ${name} has ${known} ${secret}')
+    batcher.forEach('combos').command('echo ${name} has ${secret} ${known}')
   ],
 
   expected: '# Started batch process\n\
@@ -116,9 +116,9 @@ abc,xyz\n\
 SUCCESS\n\
 ```\n\
 \n\
-### Executing ` echo ${name} has ${known} ${secret} `...\n\
+### Executing ` echo ${name} has ${secret} ${known} `...\n\
 \n\
-> Finished execution of ` echo ${name} has ${known} ${secret} `:\n\
+> Finished execution of ` echo ${name} has ${secret} ${known} `:\n\
 ```\n\
 alice has abc\n\
 bob has abc\n\
