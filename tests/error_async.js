@@ -77,7 +77,7 @@ Z\n\
   "killed": false,\n\
   "code": 127,\n\
   "signal": null,\n\
-  "cmd": "/bin/sh -c error-here",\n\
+  "cmd": "error-here",\n\
   "stdout": "",\n\
   "stderr": "/bin/sh: error-here: not found"\n\
 }\n\
@@ -94,7 +94,7 @@ Z\n\
   "killed": false,\n\
   "code": 127,\n\
   "signal": null,\n\
-  "cmd": "/bin/sh -c error-here",\n\
+  "cmd": "error-here",\n\
   "stdout": "",\n\
   "stderr": "/bin/sh: error-here: not found"\n\
 }\n\

@@ -1,8 +1,24 @@
+/* eslint no-console:0 */
+
+var inspect = require('util').inspect;
+
+/**
+ * Workaround for bug in node@6.4.0
+ * removes `\r` from output
+ *
+ * @param   {mixed} data - data to format for output to console
+ * @returns {string} - formatted data, sans `\r`
+ */
+function formatOutput(data)
+{
+  return inspect(data).replace(/\r/g, '');
+}
+
 var customReporter =
   {
     init: function(state)
     {
-      console.log('init:', state);
+      console.log('init:', formatOutput(state));
     },
 
     start: function(state, command)
@@ -34,10 +50,10 @@ var customReporter =
     {
       if (error)
       {
-        console.log('last error:', error);
+        console.log('last error:', formatOutput(error));
       }
 
-      console.log('done:', state);
+      console.log('done:', formatOutput(state));
     }
   };
 

@@ -1,12 +1,12 @@
 'use strict';
 
-var extend      = require('xtend/immutable')
+var mixin       = require('mixly/mixin')
+  , extend      = require('mixly/immutable')
+  , typeOf      = require('precise-typeof')
   , partial     = require('lodash.partial')
   , once        = require('once')
   , clone       = require('./lib/clone.js')
   , cmdFactory  = require('./lib/command_factory.js')
-  , isObject    = require('./lib/is_object.js')
-  , mixin       = require('./lib/mixin.js')
   , report      = require('./lib/report.js')
   , runCommand  = require('./lib/run_command.js')
   , runFunction = require('./lib/run_function.js')
@@ -51,7 +51,7 @@ function batcher(state, tasks, callback)
   }
 
   // make sure state is an object
-  if (!isObject(state))
+  if (typeOf(state) != 'object')
   {
     throw new TypeError('Initial state should be an object');
   }
@@ -111,13 +111,13 @@ function iterator(state, tasks, callback)
   // init current task reference
   state._currentTask = {waiters: {}};
 
-  if (isObject(task))
+  if (typeOf(task) == 'object')
   {
     // update state with new options
     // to make it available for all the subcommands
-    if (isObject(task.options))
+    if (typeOf(task.options) == 'object')
     {
-      state.options = extend(state.options, task.options);
+      state.options = extend(state.options || {}, task.options);
       // no need to process it further
       delete task.options;
     }
@@ -189,11 +189,11 @@ function execute(state, task, keys, callback)
 
     // consider anything but strings, functions and arrays as direct state modifiers
     // there is no one right way to merge arrays, so leave it for custom functions
-    if (['string', 'function'].indexOf(typeof command) == -1 && !Array.isArray(command))
+    if (['array', 'function', 'string'].indexOf(typeOf(command)) == -1)
     {
       report('start', state, assignment);
       // do shallow merge, until we needed otherwise
-      state[key] = isObject(command) ? extend(state[key], command) : command;
+      state[key] = typeOf(command) == 'object' ? extend(state[key], command) : command;
       report('store', state, assignment, key);
       report('output', state, assignment, command);
       execute(state, task, keys, callback);

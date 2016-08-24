@@ -26,7 +26,7 @@ module.exports =
   "killed": false,\n\
   "code": 127,\n\
   "signal": null,\n\
-  "cmd": "/bin/sh -c non-existent-command",\n\
+  "cmd": "non-existent-command",\n\
   "stdout": "",\n\
   "stderr": "/bin/sh: non-existent-command: not found"\n\
 }\n\
@@ -39,7 +39,7 @@ module.exports =
   "killed": false,\n\
   "code": 127,\n\
   "signal": null,\n\
-  "cmd": "/bin/sh -c non-existent-command",\n\
+  "cmd": "non-existent-command",\n\
   "stdout": "",\n\
   "stderr": "/bin/sh: non-existent-command: not found"\n\
 }\n\

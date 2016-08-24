@@ -39,6 +39,7 @@ module.exports =
 ```\n\
 {\n\
   "combos": {\n\
+    "known": false,\n\
     "name": [\n\
       "alice",\n\
       "bob"\n\
@@ -46,14 +47,13 @@ module.exports =
     "secret": [\n\
       "abc",\n\
       "xyz"\n\
-    ],\n\
-    "known": false\n\
+    ]\n\
   },\n\
+  "hook": "echo \\"SUCCESS\\"",\n\
   "letters": [\n\
     "abc",\n\
     "xyz"\n\
   ],\n\
-  "hook": "echo \\"SUCCESS\\"",\n\
   "pre-hook": "echo \\"This is prehook command\\""\n\
 }\n\
 ```\n\
@@ -121,8 +121,8 @@ SUCCESS\n\
 > Finished execution of ` echo ${name} has ${known} ${secret} `:\n\
 ```\n\
 alice has abc\n\
-alice has xyz\n\
 bob has abc\n\
+alice has xyz\n\
 bob has xyz\n\
 ```\n\
 \n\
@@ -131,6 +131,7 @@ bob has xyz\n\
 ```\n\
 {\n\
   "combos": {\n\
+    "known": false,\n\
     "name": [\n\
       "alice",\n\
       "bob"\n\
@@ -138,14 +139,13 @@ bob has xyz\n\
     "secret": [\n\
       "abc",\n\
       "xyz"\n\
-    ],\n\
-    "known": false\n\
+    ]\n\
   },\n\
+  "hook": "echo \\"SUCCESS\\"",\n\
   "letters": [\n\
     "abc",\n\
     "xyz"\n\
   ],\n\
-  "hook": "echo \\"SUCCESS\\"",\n\
   "pre-hook": "echo \\"This is prehook command\\"",\n\
   "result": "SUCCESS"\n\
 }\n\

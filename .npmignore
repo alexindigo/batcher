@@ -1,11 +1,9 @@
-.editorconfig
-.eslint
-.istanbul.yml
-.travis.yml
-
-*.log
-
 coverage/
 node_modules/
+tests/
+
+.*
+*.log
+example*
 
 test.js

@@ -28,7 +28,7 @@ module.exports =
   "killed": false,\n\
   "code": 127,\n\
   "signal": null,\n\
-  "cmd": "/bin/sh -c non-existent-combo-command",\n\
+  "cmd": "non-existent-combo-command",\n\
   "stdout": "",\n\
   "stderr": "/bin/sh: non-existent-combo-command: not found"\n\
 }\n\
@@ -41,7 +41,7 @@ module.exports =
   "killed": false,\n\
   "code": 127,\n\
   "signal": null,\n\
-  "cmd": "/bin/sh -c non-existent-combo-command",\n\
+  "cmd": "non-existent-combo-command",\n\
   "stdout": "",\n\
   "stderr": "/bin/sh: non-existent-combo-command: not found"\n\
 }\n\

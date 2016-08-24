@@ -4,14 +4,20 @@ instrumentation:
     extensions:
         - .js
     default-excludes: true
-    excludes: ['test.js']
+    excludes: ['node_modules/', 'tests/', 'test.js']
+    compact: false
 reporting:
+    root: ./coverage/tmp
     print: summary
     reports:
+        - json
         - lcov
     dir: ./coverage
+    report-config:
+      json:
+        file: coverage.json
     watermarks:
-        statements: [80, 95]
-        lines: [80, 95]
-        functions: [80, 95]
-        branches: [80, 95]
+        statements: [90, 99]
+        lines: [90, 99]
+        functions: [90, 99]
+        branches: [90, 99]

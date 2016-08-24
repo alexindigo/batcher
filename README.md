@@ -1,4 +1,5 @@
-# Batcher
+# batcher
+
 Batch processor of shell commands and javascript functions over shared state object. Async, sequential, parallel.
 
 [![Build Status](https://img.shields.io/travis/alexindigo/batcher/master.svg?style=flat-square)](https://travis-ci.org/alexindigo/batcher)
@@ -152,4 +153,4 @@ For more examples check out [`example.js`](example.js) and [`example.md`](exampl
 
 ## License
 
-[MIT](LICENSE)
+Batcher is released under the [MIT](LICENSE) license.

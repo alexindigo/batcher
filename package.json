@@ -4,15 +4,16 @@
   "description": "Batch processor of shell commands and javascript functions over shared state object. Async, sequential, parallel.",
   "main": "index.js",
   "scripts": {
-    "test": "istanbul cover test.js",
     "lint": "eslint *.js lib/*.js tests/*.js",
-    "debug": "node test.js",
+    "test": "node test.js",
+    "cover": "istanbul cover test.js",
     "check": "istanbul check-coverage coverage/coverage.json",
-    "example": "node example.js > example.md"
+    "example": "node example.js > example.md",
+    "files": "pkgfiles --sort=name"
   },
   "pre-commit": [
     "lint",
-    "test",
+    "cover",
     "check",
     "example"
   ],
@@ -40,16 +41,19 @@
   "homepage": "https://github.com/alexindigo/batcher#readme",
   "dependencies": {
     "cartesian": "^1.0.0",
-    "executioner": "^1.2.0",
+    "executioner": "^2.0.0",
     "lodash.partial": "^3.1.1",
+    "mixly": "^1.0.0",
     "once": "^1.3.3",
-    "xtend": "^4.0.1"
+    "precise-typeof": "^1.0.2"
   },
   "devDependencies": {
-    "coveralls": "^2.11.4",
-    "eslint": "^1.10.3",
+    "coveralls": "^2.11.12",
+    "diff": "^2.2.3",
+    "eslint": "^2.13.1",
     "intercept-stdout": "^0.1.2",
-    "istanbul": "^0.4.1",
-    "pre-commit": "^1.1.2"
+    "istanbul": "^0.4.5",
+    "pkgfiles": "^2.3.0",
+    "pre-commit": "^1.1.3"
   }
 }
