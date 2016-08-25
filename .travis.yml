@@ -1,9 +1,7 @@
 os:
 - osx
 - linux
-matrix:
-  fast_finish: true
-sudo: false
+osx_image: xcode7.3
 language: node_js
 node_js:
   - "0.12"
@@ -11,6 +9,8 @@ node_js:
   - "4"
   - "5"
   - "stable"
+matrix:
+  fast_finish: true
 script:
   - node --version
   - npm --version
@@ -21,3 +21,4 @@ script:
   - npm run check
 after_success:
   - "cat coverage/lcov.info | ./node_modules/.bin/coveralls"
+sudo: false
