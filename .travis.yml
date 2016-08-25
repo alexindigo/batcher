@@ -6,13 +6,13 @@ node_js:
   - "iojs"
   - "4"
   - "5"
-  - "stable"
+  - "6"
 
 os:
 #- osx
 - linux
 
-osx_image: xcode8
+#osx_image: xcode8
 
 install:
   - travis_retry npm install
