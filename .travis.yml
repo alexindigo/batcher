@@ -14,8 +14,8 @@ os:
 
 #osx_image: xcode8
 
-install:
-  - travis_retry npm install
+# install:
+#   - travis_retry npm install
 
 script:
   - node --version
