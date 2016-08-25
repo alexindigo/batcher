@@ -8,9 +8,9 @@ node_js:
   - "5"
   - "6"
 
-os:
-#- osx
-- linux
+# os:
+# #- osx
+# - linux
 
 #osx_image: xcode8
 
