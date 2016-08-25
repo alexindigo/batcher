@@ -1,7 +1,3 @@
-os:
-- osx
-- linux
-osx_image: xcode7.3
 sudo: false
 language: node_js
 node_js:
@@ -20,3 +16,6 @@ script:
   - npm run check
 after_success:
   - "cat coverage/lcov.info | ./node_modules/.bin/coveralls"
+os:
+- osx
+- linux
