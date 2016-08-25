@@ -2,9 +2,10 @@
 
 Batch processor of shell commands and javascript functions over shared state object. Async, sequential, parallel.
 
-[![Build Status](https://img.shields.io/travis/alexindigo/batcher/master.svg?style=flat-square)](https://travis-ci.org/alexindigo/batcher)
-[![Coverage Status](https://img.shields.io/coveralls/alexindigo/batcher/master.svg?style=flat-square)](https://coveralls.io/github/alexindigo/batcher?branch=master)
+[![Linux Build](https://img.shields.io/travis/alexindigo/batcher/master.svg?label=linux:0.12-6.x&style=flat)](https://travis-ci.org/alexindigo/batcher)
+[![Windows Build](https://img.shields.io/appveyor/ci/alexindigo/batcher/master.svg?label=windows:0.12-6.x&style=flat)](https://ci.appveyor.com/project/alexindigo/batcher)
 
+[![Coverage Status](https://img.shields.io/coveralls/alexindigo/batcher/master.svg?style=flat-square)](https://coveralls.io/github/alexindigo/batcher?branch=master)
 [![Dependency Status](https://img.shields.io/david/alexindigo/batcher/master.svg?style=flat)](https://david-dm.org/alexindigo/batcher)
 [![bitHound Overall Score](https://www.bithound.io/github/alexindigo/batcher/badges/score.svg)](https://www.bithound.io/github/alexindigo/batcher)
 
