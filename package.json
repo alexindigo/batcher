@@ -1,6 +1,6 @@
 {
   "name": "batcher",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Batch processor of shell commands and javascript functions over shared state object. Async, sequential, parallel.",
   "main": "index.js",
   "scripts": {
