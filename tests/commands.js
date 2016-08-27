@@ -4,9 +4,9 @@ module.exports =
 {
   state:
   {
-    'pre-hook': 'echo "This is prehook command"',
+    'pre-hook': 'echo This is prehook command',
 
-    'hook': 'echo "SUCCESS"',
+    'hook': 'echo SUCCESS',
 
     'letters': ['abc', 'xyz'],
 
@@ -21,15 +21,15 @@ module.exports =
 
     'echo expecting ${result}',
 
-    batcher.forEach({cdn: ['image1', 'image2']}).command('echo "pretend scp to ${cdn}"'),
+    batcher.forEach({cdn: ['image1', 'image2']}).command('echo pretend scp to ${cdn}'),
 
-    batcher.forEach([{cdn: 'here'}, {cdn: 'there'}]).command('echo "pretend scp to ${cdn}"'),
+    batcher.forEach([{cdn: 'here'}, {cdn: 'there'}]).command('echo pretend scp to ${cdn}'),
 
     batcher.forEach('letters').command('echo ${letters}'),
 
     batcher.command(['echo ${letters}', 'echo ${result}']),
 
-    batcher.forEach('combos').command('echo ${name} has ${known} ${secret}')
+    batcher.forEach('combos').command('echo ${name} has ${secret} ${known}')
   ],
 
   expected: '# Started batch process\n\
@@ -39,6 +39,7 @@ module.exports =
 ```\n\
 {\n\
   "combos": {\n\
+    "known": false,\n\
     "name": [\n\
       "alice",\n\
       "bob"\n\
@@ -46,33 +47,32 @@ module.exports =
     "secret": [\n\
       "abc",\n\
       "xyz"\n\
-    ],\n\
-    "known": false\n\
+    ]\n\
   },\n\
+  "hook": "echo SUCCESS",\n\
   "letters": [\n\
     "abc",\n\
     "xyz"\n\
   ],\n\
-  "hook": "echo \\"SUCCESS\\"",\n\
-  "pre-hook": "echo \\"This is prehook command\\""\n\
+  "pre-hook": "echo This is prehook command"\n\
 }\n\
 ```\n\
 \n\
 ## Execution\n\
 \n\
 \n\
-### Executing ` echo "This is prehook command" `...\n\
+### Executing ` echo This is prehook command `...\n\
 \n\
-> Finished execution of ` echo "This is prehook command" `:\n\
+> Finished execution of ` echo This is prehook command `:\n\
 ```\n\
 This is prehook command\n\
 ```\n\
 \n\
-### Executing ` echo "SUCCESS" `...\n\
+### Executing ` echo SUCCESS `...\n\
 \n\
 > Storing output into ` result `\n\
 \n\
-> Finished execution of ` echo "SUCCESS" `:\n\
+> Finished execution of ` echo SUCCESS `:\n\
 ```\n\
 SUCCESS\n\
 ```\n\
@@ -84,17 +84,17 @@ SUCCESS\n\
 expecting SUCCESS\n\
 ```\n\
 \n\
-### Executing ` echo "pretend scp to ${cdn}" `...\n\
+### Executing ` echo pretend scp to ${cdn} `...\n\
 \n\
-> Finished execution of ` echo "pretend scp to ${cdn}" `:\n\
+> Finished execution of ` echo pretend scp to ${cdn} `:\n\
 ```\n\
 pretend scp to image1\n\
 pretend scp to image2\n\
 ```\n\
 \n\
-### Executing ` echo "pretend scp to ${cdn}" `...\n\
+### Executing ` echo pretend scp to ${cdn} `...\n\
 \n\
-> Finished execution of ` echo "pretend scp to ${cdn}" `:\n\
+> Finished execution of ` echo pretend scp to ${cdn} `:\n\
 ```\n\
 pretend scp to here\n\
 pretend scp to there\n\
@@ -116,13 +116,13 @@ abc,xyz\n\
 SUCCESS\n\
 ```\n\
 \n\
-### Executing ` echo ${name} has ${known} ${secret} `...\n\
+### Executing ` echo ${name} has ${secret} ${known} `...\n\
 \n\
-> Finished execution of ` echo ${name} has ${known} ${secret} `:\n\
+> Finished execution of ` echo ${name} has ${secret} ${known} `:\n\
 ```\n\
 alice has abc\n\
-alice has xyz\n\
 bob has abc\n\
+alice has xyz\n\
 bob has xyz\n\
 ```\n\
 \n\
@@ -131,6 +131,7 @@ bob has xyz\n\
 ```\n\
 {\n\
   "combos": {\n\
+    "known": false,\n\
     "name": [\n\
       "alice",\n\
       "bob"\n\
@@ -138,15 +139,14 @@ bob has xyz\n\
     "secret": [\n\
       "abc",\n\
       "xyz"\n\
-    ],\n\
-    "known": false\n\
+    ]\n\
   },\n\
+  "hook": "echo SUCCESS",\n\
   "letters": [\n\
     "abc",\n\
     "xyz"\n\
   ],\n\
-  "hook": "echo \\"SUCCESS\\"",\n\
-  "pre-hook": "echo \\"This is prehook command\\"",\n\
+  "pre-hook": "echo This is prehook command",\n\
   "result": "SUCCESS"\n\
 }\n\
 ```\n\

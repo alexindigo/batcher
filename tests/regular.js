@@ -73,7 +73,7 @@ module.exports =
   {
     if (err) throw err;
 
-    console.log('DONE', state);
+    console.log('DONE', JSON.stringify(state, null, 2)); // eslint-disable-line no-console
   },
 
   expected: '# Started batch process\n\
@@ -82,11 +82,11 @@ module.exports =
 \n\
 ```\n\
 {\n\
+  "field": "value",\n\
   "nay": null,\n\
   "no": false,\n\
-  "yes": true,\n\
   "user": "test",\n\
-  "field": "value"\n\
+  "yes": true\n\
 }\n\
 ```\n\
 \n\
@@ -184,15 +184,18 @@ internal: 42\n\
 ```\n\
 \n\
 ```\n\
-DONE { never: undefined,\n\
-  nay: null,\n\
-  no: false,\n\
-  yes: true,\n\
-  user: \'test\',\n\
-  field: \'value\',\n\
-  options: { cwd: \'tests/\' },\n\
-  numTestSuites: \'' + numberOfTestFiles + '\',\n\
-  custom: 13,\n\
-  internal: 26,\n\
-  acustom: 42 }\n\
+DONE {\n\
+  "nay": null,\n\
+  "no": false,\n\
+  "yes": true,\n\
+  "user": "test",\n\
+  "field": "value",\n\
+  "options": {\n\
+    "cwd": "tests/"\n\
+  },\n\
+  "numTestSuites": "' + numberOfTestFiles + '",\n\
+  "custom": 13,\n\
+  "internal": 26,\n\
+  "acustom": 42\n\
+}\n\
 '};

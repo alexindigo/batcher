@@ -4,7 +4,7 @@ module.exports =
   [
     'echo ABC',
 
-    {options: {cmdPrefix: 'echo "prefixed:"'}},
+    {options: {cmdPrefix: 'echo prefixed:'}},
 
     ['echo ABC', ['echo KLM', 'echo XYZ']],
 
@@ -33,26 +33,26 @@ module.exports =
 ABC\n\
 ```\n\
 \n\
-### Executing ` echo ABC ` with `echo "prefixed:"` prefix...\n\
+### Executing ` echo ABC ` with `echo prefixed:` prefix...\n\
 \n\
 \n\
-### Executing ` [echo KLM, echo XYZ] ` with `echo "prefixed:"` prefix...\n\
+### Executing ` [echo KLM, echo XYZ] ` with `echo prefixed:` prefix...\n\
 \n\
-> Finished execution of ` echo ABC ` with `echo "prefixed:"` prefix:\n\
+> Finished execution of ` echo ABC ` with `echo prefixed:` prefix:\n\
 ```\n\
 prefixed: echo ABC\n\
 ```\n\
-> Finished execution of ` [echo KLM, echo XYZ] ` with `echo "prefixed:"` prefix:\n\
+> Finished execution of ` [echo KLM, echo XYZ] ` with `echo prefixed:` prefix:\n\
 ```\n\
 prefixed: echo KLM\n\
 prefixed: echo XYZ\n\
 ```\n\
 \n\
-### Executing ` echo word ` with `echo "prefixed:"` prefix...\n\
+### Executing ` echo word ` with `echo prefixed:` prefix...\n\
 \n\
 > Storing output into ` word `\n\
 \n\
-> Finished execution of ` echo word ` with `echo "prefixed:"` prefix:\n\
+> Finished execution of ` echo word ` with `echo prefixed:` prefix:\n\
 ```\n\
 prefixed: echo word\n\
 ```\n\

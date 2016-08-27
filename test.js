@@ -1,6 +1,9 @@
+/* eslint no-console:0 */
+
 var assert          = require('assert')
   , partial         = require('lodash.partial')
   , intercept       = require('intercept-stdout')
+  , diff            = require('diff')
   , batcher         = require('./')
   , defaultReporter = require('./default_reporter.js')
   , augmentCallback = require('./lib/augmenter.js')
@@ -98,11 +101,15 @@ function runTests(tests)
 
       console.log('\n------- output -------');
       console.log(output);
-      console.log('------- /output -------\n');
+      console.log('------- /output (', output.length, ') -------\n');
 
       console.log('\n------- expected -------');
       console.log(test.expected);
-      console.log('------- /expected -------\n');
+      console.log('------- /expected (', test.expected.length, ') -------\n');
+
+      console.log('\n------- diff -------');
+      console.log(diff.diffChars(test.expected, output));
+      console.log('------- /diff -------\n');
 
       assert.fail(output, test.expected, undefined, '==');
     }

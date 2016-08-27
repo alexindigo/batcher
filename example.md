@@ -4,19 +4,19 @@
 
 ```
 {
-  "options": {
-    "cwd": "/Users/alex/Sites/batcher",
-    "verbose": true
-  },
   "deploy": [
     "echo \"pushing A to ${cdn}:${dir}:${file}\"",
     "echo \"pushing B to ${cdn}:${dir}:${file}\""
   ],
-  "versions": {
-    "os": "10",
-    "node": "0.10"
+  "myValue": "42",
+  "options": {
+    "cwd": "/Users/alex/Projects/batcher",
+    "verbose": true
   },
-  "myValue": "42"
+  "versions": {
+    "node": "0.10",
+    "os": "10"
+  }
 }
 ```
 
@@ -37,11 +37,11 @@ A
 
 > Finished execution of ` node -v `:
 ```
-v0.12.4
+v4.5.0
 ```
 > Finished execution of ` npm -v `:
 ```
-2.10.1
+2.15.9
 ```
 
 ### Executing ` [echo A, echo B] `...
@@ -86,21 +86,21 @@ xxx-alex-zzz
 
 > Finished execution of ` node -v `:
 ```
-v0.12.4
+v4.5.0
 ```
 > Storing output into ` npm `
 
 > Finished execution of ` npm -v `:
 ```
-2.10.1
+2.15.9
 ```
 
 ### Executing ` {"node":"node -v","npm":"npm -v"} `...
 
 > Finished execution of ` {"node":"node -v","npm":"npm -v"} `:
 ```
-node: v0.12.4
-npm: 2.10.1
+node: v4.5.0
+npm: 2.15.9
 ```
 
 ### Executing ` CUSTOM SYNC FUNCTION `...
@@ -118,7 +118,7 @@ echo "<${user}> with node: ${node}"
 
 > Finished execution of ` echo "<${user}> with node: ${node}" `:
 ```
-<alex> with node: v0.12.4
+<alex> with node: v4.5.0
 ```
 
 ### Executing ` echo "1. ${myValue}" `...
@@ -193,14 +193,14 @@ updated to string
 
 > Finished execution of ` CUSTOM ASYNC FUNCTION `:
 ```
-augmented result from custom function: __v0.12.4__ + __2.10.1__
+augmented result from custom function: __v4.5.0__ + __2.15.9__
 ```
 
 ### Executing ` CUSTOM SYNC FUNCTION `...
 
 > Finished execution of ` CUSTOM SYNC FUNCTION `:
 ```
-ABC + __v0.12.4__ + __2.10.1__ + XYZ
+ABC + __v4.5.0__ + __2.15.9__ + XYZ
 ```
 
 ### Executing ` echo cmd1 ` with `echo with-prefix` prefix...
@@ -254,8 +254,8 @@ output2: with-prefix cmd5-2
 > Finished execution of ` [echo "pushing A to ${cdn}:${dir}:${file}", echo "pushing B to ${cdn}:${dir}:${file}"] `:
 ```
 ["pushing A to image1:/dir:file1","pushing B to image1:/dir:file1"]
-["pushing A to image1:/dir:file2","pushing B to image1:/dir:file2"]
 ["pushing A to image2:/dir:file1","pushing B to image2:/dir:file1"]
+["pushing A to image1:/dir:file2","pushing B to image1:/dir:file2"]
 ["pushing A to image2:/dir:file2","pushing B to image2:/dir:file2"]
 ```
 
@@ -274,8 +274,8 @@ scp to image2
 > Finished execution of ` echo ${cdn} and ${file} `:
 ```
 image1 and file1
-image1 and file2
 image2 and file1
+image1 and file2
 image2 and file2
 ```
 
@@ -314,46 +314,46 @@ read from list: Ddddd
 
 ```
 {
-  "options": {
-    "cwd": "/Users/alex/Sites/batcher/tests",
-    "verbose": true,
-    "cmdPrefix": null
-  },
+  "custom": "__v4.5.0__ + __2.15.9__",
+  "customCommandOverCombo": [
+    "image1 and file1",
+    "image2 and file1",
+    "image1 and file2",
+    "image2 and file2"
+  ],
   "deploy": [
     "echo \"pushing A to ${cdn}:${dir}:${file}\"",
     "echo \"pushing B to ${cdn}:${dir}:${file}\""
   ],
-  "versions": {
-    "os": "10",
-    "node": "0.12",
-    "npm": "2.1"
-  },
-  "myValue": "updated to string",
-  "user": "alex",
-  "node": "v0.12.4",
-  "npm": "2.10.1",
+  "files": "15",
   "hook": "echo \"<${user}> with node: ${node}\"",
-  "result": "<alex> with node: v0.12.4",
-  "myNewValue": 28,
-  "newList": [
-    "1",
-    "2",
-    "3"
-  ],
-  "custom": "__v0.12.4__ + __2.10.1__",
-  "storingInState": "with-prefix echo cmd3",
-  "customCommandOverCombo": [
-    "image1 and file1",
-    "image1 and file2",
-    "image2 and file1",
-    "image2 and file2"
-  ],
   "listOfStuff": [
     "Aa",
     "Bbb",
     "Cccc",
     "Ddddd"
   ],
-  "files": "15"
+  "myNewValue": 28,
+  "myValue": "updated to string",
+  "newList": [
+    "1",
+    "2",
+    "3"
+  ],
+  "node": "v4.5.0",
+  "npm": "2.15.9",
+  "options": {
+    "cmdPrefix": null,
+    "cwd": "/Users/alex/Projects/batcher/tests",
+    "verbose": true
+  },
+  "result": "<alex> with node: v4.5.0",
+  "storingInState": "with-prefix echo cmd3",
+  "user": "alex",
+  "versions": {
+    "node": "0.12",
+    "npm": "2.1",
+    "os": "10"
+  }
 }
 ```

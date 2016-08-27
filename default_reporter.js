@@ -1,3 +1,7 @@
+/* eslint no-console:0 */
+
+var typeOf = require('precise-typeof');
+
 module.exports =
 {
   /**
@@ -11,7 +15,7 @@ module.exports =
     console.log('# Started batch process\n');
     console.log('## Initial State:\n');
     console.log('```');
-    console.log(JSON.stringify(state, null, 2));
+    console.log(JSON.stringify(sortKeys(state), null, 2));
     console.log('```');
     console.log('\n## Execution\n');
   },
@@ -98,10 +102,33 @@ module.exports =
 
     console.log('\n## Final State:\n');
     console.log('```');
-    console.log(JSON.stringify(state, null, 2));
+    console.log(JSON.stringify(sortKeys(state), null, 2));
     console.log('```');
   }
 };
+
+/**
+ * Tries really hard to sort object's keys alphabetically
+ *
+ * @param   {object} obj - object to sort
+ * @returns {object} - sorted object
+ */
+function sortKeys(obj)
+{
+  var sortedObj = {};
+
+  if (typeOf(obj) == 'object')
+  {
+    Object.keys(obj).sort().forEach(function(key)
+    {
+      sortedObj[key] = sortKeys(obj[key]);
+    });
+
+    obj = sortedObj;
+  }
+
+  return obj;
+}
 
 /**
  * Formats provided variable into a string, ready for console
@@ -113,11 +140,11 @@ function format(obj)
 {
   var output;
 
-  if (typeof obj == 'object')
+  if (typeOf(obj) == 'object' || typeOf(obj) == 'array' || typeOf(obj) == 'null')
   {
     output = JSON.stringify(obj);
   }
-  else if (typeof obj != 'undefined')
+  else if (typeOf(obj) != 'undefined')
   {
     output = obj.toString();
   }
