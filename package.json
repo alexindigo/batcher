@@ -44,7 +44,7 @@
     "executioner": "^2.0.1",
     "lodash.partial": "^4.2.1",
     "mixly": "^1.0.0",
-    "once": "^1.3.3",
+    "once": "^1.4.0",
     "precise-typeof": "^1.0.2"
   },
   "devDependencies": {
