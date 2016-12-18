@@ -4,25 +4,27 @@ module.exports =
   [
     'echo A',
 
-    ['echo Z',
+    [
+      'echo Z',
 
-    // regular custom function
-    function(cb)
-    {
-      setTimeout(function()
+      // regular custom function
+      function(cb)
       {
-        cb(null, 'Will be cancelled');
-      }, 2500);
-    },
+        setTimeout(function()
+        {
+          cb(null, 'Will be cancelled');
+        }, 2500);
+      },
 
-    // broken sync function
-    function()
-    {
-      this.happened = 'Modified state before throwing up';
+      // broken sync function
+      function()
+      {
+        this.happened = 'Modified state before throwing up';
 
-      // report error from within sync function
-      throw 'Sync functions throw instead of passing error into callback.';
-    }],
+        // report error from within sync function
+        throw 'Sync functions throw instead of passing error into callback.';
+      }
+    ],
 
     'should not get here'
   ],

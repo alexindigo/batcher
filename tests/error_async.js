@@ -142,36 +142,39 @@ module.exports =
   [
     'echo A',
 
-    ['echo Z', ['sleep 1', 'error-here'],
+    [
+      'echo Z',
+      ['sleep 1', 'error-here'],
 
-    // regular custom function
-    function(cb)
-    {
-      setTimeout(function()
+      // regular custom function
+      function(cb)
       {
-        cb(null, 'Should be cancelled');
-      }, 2000);
-    },
+        setTimeout(function()
+        {
+          cb(null, 'Should be cancelled');
+        }, 2000);
+      },
 
-    // terminable function
-    // function needs to be defined with an argument
-    // to signal that it's async capable
-    // but eslint complaining
-    function(cb) //eslint-disable-line no-unused-vars
-    {
-      var id = setTimeout(function()
+      // terminable function
+      // function needs to be defined with an argument
+      // to signal that it's async capable
+      // but eslint complaining
+      function(cb) //eslint-disable-line no-unused-vars
       {
-        throw new Error('Should be cancelled.');
+        var id = setTimeout(function()
+        {
+          throw new Error('Should be cancelled.');
 
-        // cb('will not get here');
-      }, 1500);
+          // cb('will not get here');
+        }, 1500);
 
-      return function terminate()
-      {
-        // prevent from throwing
-        clearTimeout(id);
-      };
-    }],
+        return function terminate()
+        {
+          // prevent from throwing
+          clearTimeout(id);
+        };
+      }
+    ],
 
     'should not get here'
   ],
