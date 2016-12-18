@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint *.js lib/*.js tests/*.js",
+    "ci-lint": "is-node-modern 6 && npm run lint || is-node-not-modern 6",
     "test": "node test.js",
     "cover": "istanbul cover test.js",
     "check": "istanbul check-coverage coverage/coverage.json",
@@ -50,8 +51,9 @@
   "devDependencies": {
     "coveralls": "^2.11.15",
     "diff": "^3.1.0",
-    "eslint": "^2.13.1",
+    "eslint": "^3.12.2",
     "intercept-stdout": "^0.1.2",
+    "is-node-modern": "^1.0.0",
     "istanbul": "^0.4.5",
     "pkgfiles": "^2.3.2",
     "pre-commit": "^1.2.2"
