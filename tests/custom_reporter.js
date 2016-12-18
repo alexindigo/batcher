@@ -3,6 +3,29 @@
 var inspect = require('util').inspect;
 
 /**
+ * Abstracts function printing,
+ * to accomodate different node versions
+ *
+ * @param   {function} subj - function object
+ * @returns {string} - string representation
+ */
+function printFunction(subj)
+{
+  var result;
+
+  if (typeof subj == 'function')
+  {
+    result = '[Function' + (subj.name ? ': ' + subj.name : '') + ']';
+  }
+  else
+  {
+    result = '[' + (typeof subj) + ']';
+  }
+
+  return result;
+}
+
+/**
  * Workaround for bug in node@6.4.0
  * removes `\r` from output
  *
@@ -79,12 +102,12 @@ module.exports =
 
   expected: 'init: { options: \n\
    { reporter: \n\
-      { init: [Function],\n\
-        start: [Function],\n\
-        error: [Function],\n\
-        killed: [Function],\n\
-        output: [Function],\n\
-        store: [Function],\n\
+      { init: ' + printFunction(customReporter.init) + ',\n\
+        start: ' + printFunction(customReporter.start) + ',\n\
+        error: ' + printFunction(customReporter.error) + ',\n\
+        killed: ' + printFunction(customReporter.killed) + ',\n\
+        output: ' + printFunction(customReporter.output) + ',\n\
+        store: ' + printFunction(customReporter.store) + ',\n\
         done: [Function] } } }\n\
 start: echo A\n\
 output: echo A A\n\
@@ -103,13 +126,15 @@ output: [echo A, echo B] [ \'A\', \'B\' ]\n\
 output: [echo W, echo X, echo Y, echo Z] [ \'W\', \'X\', \'Y\', \'Z\' ]\n\
 done: { options: \n\
    { reporter: \n\
-      { init: [Function],\n\
-        start: [Function],\n\
-        error: [Function],\n\
-        killed: [Function],\n\
-        output: [Function],\n\
-        store: [Function],\n\
+      { init: ' + printFunction(customReporter.init) + ',\n\
+        start: ' + printFunction(customReporter.start) + ',\n\
+        error: ' + printFunction(customReporter.error) + ',\n\
+        killed: ' + printFunction(customReporter.killed) + ',\n\
+        output: ' + printFunction(customReporter.output) + ',\n\
+        store: ' + printFunction(customReporter.store) + ',\n\
         done: [Function] } },\n\
   user: \'alex\' }\n\
 '
 };
+
+// ^ `done` reporter gets overloaded by batcher's iterator function
