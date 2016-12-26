@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "coveralls": "^2.11.15",
-    "diff": "^3.1.0",
+    "diff": "^3.2.0",
     "eslint": "^3.12.2",
     "intercept-stdout": "^0.1.2",
     "is-node-modern": "^1.0.0",
