@@ -37,11 +37,11 @@ A
 
 > Finished execution of ` node -v `:
 ```
-v4.6.2
+v6.10.1
 ```
 > Finished execution of ` npm -v `:
 ```
-2.15.11
+3.10.10
 ```
 
 ### Executing ` [echo A, echo B] `...
@@ -86,21 +86,21 @@ xxx-alex-zzz
 
 > Finished execution of ` node -v `:
 ```
-v4.6.2
+v6.10.1
 ```
 > Storing output into ` npm `
 
 > Finished execution of ` npm -v `:
 ```
-2.15.11
+3.10.10
 ```
 
 ### Executing ` {"node":"node -v","npm":"npm -v"} `...
 
 > Finished execution of ` {"node":"node -v","npm":"npm -v"} `:
 ```
-node: v4.6.2
-npm: 2.15.11
+node: v6.10.1
+npm: 3.10.10
 ```
 
 ### Executing ` CUSTOM SYNC FUNCTION `...
@@ -118,7 +118,7 @@ echo "<${user}> with node: ${node}"
 
 > Finished execution of ` echo "<${user}> with node: ${node}" `:
 ```
-<alex> with node: v4.6.2
+<alex> with node: v6.10.1
 ```
 
 ### Executing ` echo "1. ${myValue}" `...
@@ -193,14 +193,14 @@ updated to string
 
 > Finished execution of ` CUSTOM ASYNC FUNCTION `:
 ```
-augmented result from custom function: __v4.6.2__ + __2.15.11__
+augmented result from custom function: __v6.10.1__ + __3.10.10__
 ```
 
 ### Executing ` CUSTOM SYNC FUNCTION `...
 
 > Finished execution of ` CUSTOM SYNC FUNCTION `:
 ```
-ABC + __v4.6.2__ + __2.15.11__ + XYZ
+ABC + __v6.10.1__ + __3.10.10__ + XYZ
 ```
 
 ### Executing ` echo cmd1 ` with `echo with-prefix` prefix...
@@ -314,7 +314,7 @@ read from list: Ddddd
 
 ```
 {
-  "custom": "__v4.6.2__ + __2.15.11__",
+  "custom": "__v6.10.1__ + __3.10.10__",
   "customCommandOverCombo": [
     "image1 and file1",
     "image2 and file1",
@@ -340,14 +340,14 @@ read from list: Ddddd
     "2",
     "3"
   ],
-  "node": "v4.6.2",
-  "npm": "2.15.11",
+  "node": "v6.10.1",
+  "npm": "3.10.10",
   "options": {
     "cmdPrefix": null,
     "cwd": "/Users/alex/Projects/batcher/tests",
     "verbose": true
   },
-  "result": "<alex> with node: v4.6.2",
+  "result": "<alex> with node: v6.10.1",
   "storingInState": "with-prefix echo cmd3",
   "user": "alex",
   "versions": {
