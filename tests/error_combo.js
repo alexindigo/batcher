@@ -11,9 +11,9 @@ var posixExpected = '# Started batch process\n\
 ## Execution\n\
 \n\
 \n\
-### Executing ` non-existent-combo-command `...\n\
+### Executing `` non-existent-combo-command ``...\n\
 \n\
-> Failed to execute ` non-existent-combo-command `:\n\
+> Failed to execute `` non-existent-combo-command ``:\n\
 ```\n\
 {\n\
   "killed": false,\n\
@@ -56,9 +56,9 @@ var win32Expected = '# Started batch process\n\
 ## Execution\n\
 \n\
 \n\
-### Executing ` non-existent-combo-command `...\n\
+### Executing `` non-existent-combo-command ``...\n\
 \n\
-> Failed to execute ` non-existent-combo-command `:\n\
+> Failed to execute `` non-existent-combo-command ``:\n\
 ```\n\
 {\n\
   "killed": false,\n\

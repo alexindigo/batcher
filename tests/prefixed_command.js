@@ -15,63 +15,63 @@ module.exports =
     'echo entered ${word}'
   ],
 
-  expected: '# Started batch process\n\
-\n\
-## Initial State:\n\
-\n\
-```\n\
-{}\n\
-```\n\
-\n\
-## Execution\n\
-\n\
-\n\
-### Executing ` echo ABC `...\n\
-\n\
-> Finished execution of ` echo ABC `:\n\
-```\n\
-ABC\n\
-```\n\
-\n\
-### Executing ` echo ABC ` with `echo prefixed:` prefix...\n\
-\n\
-\n\
-### Executing ` [echo KLM, echo XYZ] ` with `echo prefixed:` prefix...\n\
-\n\
-> Finished execution of ` echo ABC ` with `echo prefixed:` prefix:\n\
-```\n\
-prefixed: echo ABC\n\
-```\n\
-> Finished execution of ` [echo KLM, echo XYZ] ` with `echo prefixed:` prefix:\n\
-```\n\
-prefixed: echo KLM\n\
-prefixed: echo XYZ\n\
-```\n\
-\n\
-### Executing ` echo word ` with `echo prefixed:` prefix...\n\
-\n\
-> Storing output into ` word `\n\
-\n\
-> Finished execution of ` echo word ` with `echo prefixed:` prefix:\n\
-```\n\
-prefixed: echo word\n\
-```\n\
-\n\
-### Executing ` echo entered ${word} `...\n\
-\n\
-> Finished execution of ` echo entered ${word} `:\n\
-```\n\
-entered prefixed: echo word\n\
-```\n\
-\n\
-## Final State:\n\
-\n\
-```\n\
-{\n\
-  "options": {\n\
-    "cmdPrefix": null\n\
-  },\n\
-  "word": "prefixed: echo word"\n\
-}\n\
-```\n\
-'};
+  expected: `# Started batch process
+
+## Initial State:
+
+\`\`\`
+{}
+\`\`\`
+
+## Execution
+
+
+### Executing \`\` echo ABC \`\`...
+
+> Finished execution of \`\` echo ABC \`\`:
+\`\`\`
+ABC
+\`\`\`
+
+### Executing \`\` echo ABC \`\` with \`\`echo prefixed:\`\` prefix...
+
+
+### Executing \`\` [echo KLM, echo XYZ] \`\` with \`\`echo prefixed:\`\` prefix...
+
+> Finished execution of \`\` echo ABC \`\` with \`\`echo prefixed:\`\` prefix:
+\`\`\`
+prefixed: echo ABC
+\`\`\`
+> Finished execution of \`\` [echo KLM, echo XYZ] \`\` with \`\`echo prefixed:\`\` prefix:
+\`\`\`
+prefixed: echo KLM
+prefixed: echo XYZ
+\`\`\`
+
+### Executing \`\` echo word \`\` with \`\`echo prefixed:\`\` prefix...
+
+> Storing output into \`\` word \`\`
+
+> Finished execution of \`\` echo word \`\` with \`\`echo prefixed:\`\` prefix:
+\`\`\`
+prefixed: echo word
+\`\`\`
+
+### Executing \`\` echo entered \${word} \`\`...
+
+> Finished execution of \`\` echo entered \${word} \`\`:
+\`\`\`
+entered prefixed: echo word
+\`\`\`
+
+## Final State:
+
+\`\`\`
+{
+  "options": {
+    "cmdPrefix": null
+  },
+  "word": "prefixed: echo word"
+}
+\`\`\`
+`};

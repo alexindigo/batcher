@@ -6,97 +6,96 @@ module.exports =
 
     [['sleep 4 && echo D', 'sleep 3 && echo C', 'sleep 5 && echo E'], ['sleep 2 && echo B', 'sleep 1 && echo A']],
 
-    {second: 'sleep 1 && echo Second', first: function(cb){ setTimeout(function(){ cb(null, 'First'); }, 500); }}
+    {second: 'sleep 1 && echo Second', first: function(cb) { setTimeout(function() { cb(null, 'First'); }, 500); }}
   ],
 
-  expected: '# Started batch process\n\
-\n\
-## Initial State:\n\
-\n\
-```\n\
-{}\n\
-```\n\
-\n\
-## Execution\n\
-\n\
-\n\
-### Executing ` sleep 4 && echo D `...\n\
-\n\
-\n\
-### Executing ` sleep 2 && echo B `...\n\
-\n\
-\n\
-### Executing ` sleep 1 && echo A `...\n\
-\n\
-\n\
-### Executing ` sleep 3 && echo C `...\n\
-\n\
-\n\
-### Executing ` sleep 5 && echo E `...\n\
-\n\
-> Finished execution of ` sleep 1 && echo A `:\n\
-```\n\
-A\n\
-```\n\
-> Finished execution of ` sleep 2 && echo B `:\n\
-```\n\
-B\n\
-```\n\
-> Finished execution of ` sleep 3 && echo C `:\n\
-```\n\
-C\n\
-```\n\
-> Finished execution of ` sleep 4 && echo D `:\n\
-```\n\
-D\n\
-```\n\
-> Finished execution of ` sleep 5 && echo E `:\n\
-```\n\
-E\n\
-```\n\
-\n\
-### Executing ` [sleep 4 && echo D, sleep 3 && echo C, sleep 5 && echo E] `...\n\
-\n\
-\n\
-### Executing ` [sleep 2 && echo B, sleep 1 && echo A] `...\n\
-\n\
-> Finished execution of ` [sleep 2 && echo B, sleep 1 && echo A] `:\n\
-```\n\
-B\n\
-A\n\
-```\n\
-> Finished execution of ` [sleep 4 && echo D, sleep 3 && echo C, sleep 5 && echo E] `:\n\
-```\n\
-D\n\
-C\n\
-E\n\
-```\n\
-\n\
-### Executing ` sleep 1 && echo Second `...\n\
-\n\
-\n\
-### Executing ` CUSTOM ASYNC FUNCTION `...\n\
-\n\
-> Storing output into ` first `\n\
-\n\
-> Finished execution of ` CUSTOM ASYNC FUNCTION `:\n\
-```\n\
-First\n\
-```\n\
-> Storing output into ` second `\n\
-\n\
-> Finished execution of ` sleep 1 && echo Second `:\n\
-```\n\
-Second\n\
-```\n\
-\n\
-## Final State:\n\
-\n\
-```\n\
-{\n\
-  "first": "First",\n\
-  "second": "Second"\n\
-}\n\
-```\n\
-'
-};
+  expected: `# Started batch process
+
+## Initial State:
+
+\`\`\`
+{}
+\`\`\`
+
+## Execution
+
+
+### Executing \`\` sleep 4 && echo D \`\`...
+
+
+### Executing \`\` sleep 2 && echo B \`\`...
+
+
+### Executing \`\` sleep 1 && echo A \`\`...
+
+
+### Executing \`\` sleep 3 && echo C \`\`...
+
+
+### Executing \`\` sleep 5 && echo E \`\`...
+
+> Finished execution of \`\` sleep 1 && echo A \`\`:
+\`\`\`
+A
+\`\`\`
+> Finished execution of \`\` sleep 2 && echo B \`\`:
+\`\`\`
+B
+\`\`\`
+> Finished execution of \`\` sleep 3 && echo C \`\`:
+\`\`\`
+C
+\`\`\`
+> Finished execution of \`\` sleep 4 && echo D \`\`:
+\`\`\`
+D
+\`\`\`
+> Finished execution of \`\` sleep 5 && echo E \`\`:
+\`\`\`
+E
+\`\`\`
+
+### Executing \`\` [sleep 4 && echo D, sleep 3 && echo C, sleep 5 && echo E] \`\`...
+
+
+### Executing \`\` [sleep 2 && echo B, sleep 1 && echo A] \`\`...
+
+> Finished execution of \`\` [sleep 2 && echo B, sleep 1 && echo A] \`\`:
+\`\`\`
+B
+A
+\`\`\`
+> Finished execution of \`\` [sleep 4 && echo D, sleep 3 && echo C, sleep 5 && echo E] \`\`:
+\`\`\`
+D
+C
+E
+\`\`\`
+
+### Executing \`\` sleep 1 && echo Second \`\`...
+
+
+### Executing \`\` function (cb) { setTimeout(function() { cb(null, 'First'); }, 500); } \`\`...
+
+> Storing output into \`\` first \`\`
+
+> Finished execution of \`\` function (cb) { setTimeout(function() { cb(null, 'First'); }, 500); } \`\`:
+\`\`\`
+First
+\`\`\`
+> Storing output into \`\` second \`\`
+
+> Finished execution of \`\` sleep 1 && echo Second \`\`:
+\`\`\`
+Second
+\`\`\`
+
+## Final State:
+
+\`\`\`
+{
+  "first": "First",
+  "second": "Second"
+}
+\`\`\`
+`};

@@ -1,5 +1,3 @@
-'use strict';
-
 var mixin       = require('mixly/mixin')
   , extend      = require('mixly/immutable')
   , typeOf      = require('precise-typeof')
@@ -83,7 +81,7 @@ function batcher(state, tasks, callback)
     }
 
     // pass it to the reporter or callback
-    callback ? callback(error, finalState) : report('done', finalState, error);
+    return callback ? callback(error, finalState) : report('done', finalState, error);
   });
 }
 
@@ -118,6 +116,7 @@ function iterator(state, tasks, callback)
     if (typeOf(task.options) == 'object')
     {
       state.options = extend(state.options || {}, task.options);
+
       // no need to process it further
       delete task.options;
     }
@@ -130,7 +129,7 @@ function iterator(state, tasks, callback)
   // into single element arrays
   if (typeof task != 'object')
   {
-    task = [ task ];
+    task = [task];
   }
 
   execute(state, task, keys, function(err, modifiedState)
@@ -138,7 +137,7 @@ function iterator(state, tasks, callback)
     // reset current task
     // if it's error and modified state
     // isn't provided, use context
-    (modifiedState || state)._currentTask = undefined;
+    (modifiedState || state)._currentTask = undefined; // eslint-disable-line no-undefined
 
     if (err) return callback(err);
 
@@ -162,9 +161,11 @@ function execute(state, task, keys, callback)
   var key
     , control
     , assignment   = 'ASSIGNMENT'
+
       // get list of commands left for this iteration
     , commandsLeft = (keys || task).length
     , command      = (keys || task).shift()
+
       // job id within given task
     , jobId        = commandsLeft
     ;
@@ -176,7 +177,7 @@ function execute(state, task, keys, callback)
     // if it's last one proceed to callback
     if (Object.keys(state._currentTask.waiters).length === 0)
     {
-      callback(null, state);
+      callback(null, state);  // eslint-disable-line callback-return
     }
 
     return;
@@ -192,6 +193,7 @@ function execute(state, task, keys, callback)
     if (['array', 'function', 'string'].indexOf(typeOf(command)) == -1)
     {
       report('start', state, assignment);
+
       // do shallow merge, until we needed otherwise
       state[key] = typeOf(command) == 'object' ? extend(state[key], command) : command;
       report('store', state, assignment, key);
@@ -229,7 +231,8 @@ function execute(state, task, keys, callback)
     // if it's last one proceed to callback
     if (Object.keys(state._currentTask.waiters).length === 0)
     {
-      callback(null, state);
+      callback(null, state); // eslint-disable-line callback-return
+      return;
     }
   });
 
@@ -288,7 +291,7 @@ function run(command, state, callback)
 
     default:
       error.message = 'Unsupported command type: [' + (typeof command) + '] ' + command;
-      callback(error);
+      callback(error); // eslint-disable-line callback-return
       return;
   }
 
@@ -323,6 +326,7 @@ function cleanWaiters(state)
     // prevent callback from execution
     // by modifying up `once`'s `called` property
     list[job].callback.called = true;
+
     // if called it will return false
     list[job].callback.value = false;
 

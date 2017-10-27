@@ -65,9 +65,10 @@ function runTests(tests)
       .replace('"stderr": "/bin/sh: 1: ', '"stderr": "/bin/sh: ')
       .replace(': command not found', ': not found')
       ;
+
     // silent
     return '';
-  }, function(){ /* do not intercept stderr */ });
+  }, function() { /* do not intercept stderr */ });
 
   // add optional `state` object if provided
   if (test.state)
@@ -93,7 +94,7 @@ function runTests(tests)
     {
       assert.equal(output, test.expected);
     }
-    catch (e)
+    catch (ex)
     {
       console.log('\n------- failed test -------');
       console.log(test);
@@ -111,7 +112,7 @@ function runTests(tests)
       console.log(diff.diffChars(test.expected, output));
       console.log('------- /diff -------\n');
 
-      assert.fail(output, test.expected, undefined, '==');
+      assert.fail(output, test.expected, undefined, '=='); // eslint-disable-line no-undefined
     }
 
     // proceed to the next one
@@ -120,20 +121,20 @@ function runTests(tests)
     return result;
   };
 
-  // add optional `callback` property if provided
   if (test.callback)
   {
+    // add optional `callback` property if provided
     unaugment = augmentCallback(test, 'callback', customCb);
     subject = partial(subject, test.callback);
   }
-  // augment custom reporter if provided
   else if (test.state && test.state.options && test.state.options.reporter)
   {
+    // augment custom reporter if provided
     unaugment = augmentCallback(test.state.options.reporter, 'done', customCb);
   }
-  // or built-in done handler
   else
   {
+    // or built-in done handler
     unaugment = augmentCallback(defaultReporter, 'done', customCb);
   }
 
@@ -143,19 +144,20 @@ function runTests(tests)
   {
     subject();
   }
-  catch (e)
+  catch (ex)
   {
     // stop intercepting output
     unintercept();
+
     // revert callback augmentation
     unaugment();
 
     // test doesn't expect exceptions
     // or it's not the one it's looking for
-    if (typeof test.exception != 'function' || test.exception(e) !== true)
+    if (typeof test.exception != 'function' || test.exception(ex) !== true)
     {
       // re-throw
-      throw e;
+      throw ex;
     }
 
     // proceed to the next one

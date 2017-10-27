@@ -9,29 +9,29 @@ var posixExpected = '# Started batch process\n\
 ## Execution\n\
 \n\
 \n\
-### Executing ` echo A `...\n\
+### Executing `` echo A ``...\n\
 \n\
-> Finished execution of ` echo A `:\n\
+> Finished execution of `` echo A ``:\n\
 ```\n\
 A\n\
 ```\n\
 \n\
-### Executing ` echo Z `...\n\
+### Executing `` echo Z ``...\n\
 \n\
 \n\
-### Executing ` [sleep 1, error-here, not this one] `...\n\
+### Executing `` [sleep 1, error-here, not this one] ``...\n\
 \n\
 \n\
-### Executing ` [sleep 3, echo Y] `...\n\
+### Executing `` [sleep 3, echo Y] ``...\n\
 \n\
 \n\
-### Executing ` [sleep 4, echo X] `...\n\
+### Executing `` [sleep 4, echo X] ``...\n\
 \n\
-> Finished execution of ` echo Z `:\n\
+> Finished execution of `` echo Z ``:\n\
 ```\n\
 Z\n\
 ```\n\
-> Failed to execute ` [sleep 1, error-here, not this one] `:\n\
+> Failed to execute `` [sleep 1, error-here, not this one] ``:\n\
 ```\n\
 {\n\
   "killed": false,\n\
@@ -43,9 +43,9 @@ Z\n\
 }\n\
 ```\n\
 \n\
-~~ Command ` [sleep 4, echo X] ` has been terminated. ~~\n\
+~~ Command `` [sleep 4, echo X] `` has been terminated. ~~\n\
 \n\
-~~ Command ` [sleep 3, echo Y] ` has been terminated. ~~\n\
+~~ Command `` [sleep 3, echo Y] `` has been terminated. ~~\n\
 \n\
 ## Finished with errors:\n\
 \n\
@@ -78,29 +78,29 @@ var win32Expected = '# Started batch process\n\
 ## Execution\n\
 \n\
 \n\
-### Executing ` echo A `...\n\
+### Executing `` echo A ``...\n\
 \n\
-> Finished execution of ` echo A `:\n\
+> Finished execution of `` echo A ``:\n\
 ```\n\
 A\n\
 ```\n\
 \n\
-### Executing ` echo Z `...\n\
+### Executing `` echo Z ``...\n\
 \n\
 \n\
-### Executing ` [sleep 1, error-here, not this one] `...\n\
+### Executing `` [sleep 1, error-here, not this one] ``...\n\
 \n\
 \n\
-### Executing ` [sleep 3, echo Y] `...\n\
+### Executing `` [sleep 3, echo Y] ``...\n\
 \n\
 \n\
-### Executing ` [sleep 4, echo X] `...\n\
+### Executing `` [sleep 4, echo X] ``...\n\
 \n\
-> Finished execution of ` echo Z `:\n\
+> Finished execution of `` echo Z ``:\n\
 ```\n\
 Z\n\
 ```\n\
-> Failed to execute ` [sleep 1, error-here, not this one] `:\n\
+> Failed to execute `` [sleep 1, error-here, not this one] ``:\n\
 ```\n\
 {\n\
   "killed": false,\n\
@@ -112,9 +112,9 @@ Z\n\
 }\n\
 ```\n\
 \n\
-~~ Command ` [sleep 4, echo X] ` has been terminated. ~~\n\
+~~ Command `` [sleep 4, echo X] `` has been terminated. ~~\n\
 \n\
-~~ Command ` [sleep 3, echo Y] ` has been terminated. ~~\n\
+~~ Command `` [sleep 3, echo Y] `` has been terminated. ~~\n\
 \n\
 ## Finished with errors:\n\
 \n\

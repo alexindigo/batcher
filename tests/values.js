@@ -25,84 +25,83 @@ module.exports =
     {complex: {b: 17, d: 'new value'}}
   ],
 
-  expected: '# Started batch process\n\
-\n\
-## Initial State:\n\
-\n\
-```\n\
-{\n\
-  "complex": {\n\
-    "a": 1,\n\
-    "b": 2,\n\
-    "c": 3\n\
-  },\n\
-  "value": "original"\n\
-}\n\
-```\n\
-\n\
-## Execution\n\
-\n\
-\n\
-### Executing ` echo A-${value} `...\n\
-\n\
-> Finished execution of ` echo A-${value} `:\n\
-```\n\
-A-original\n\
-```\n\
-\n\
-### Executing ` ASSIGNMENT `...\n\
-\n\
-> Storing output into ` value `\n\
-\n\
-> Finished execution of ` ASSIGNMENT `:\n\
-```\n\
-42\n\
-```\n\
-\n\
-### Executing ` echo B-${value} `...\n\
-\n\
-> Finished execution of ` echo B-${value} `:\n\
-```\n\
-B-42\n\
-```\n\
-\n\
-### Executing ` VALUE SETTER `...\n\
-\n\
-> Storing output into ` value `\n\
-\n\
-> Finished execution of ` VALUE SETTER `:\n\
-```\n\
-new value\n\
-```\n\
-\n\
-### Executing ` VALUE SETTER `...\n\
-\n\
-> Finished execution of ` VALUE SETTER `:\n\
-```\n\
-goes nowhere\n\
-```\n\
-\n\
-### Executing ` ASSIGNMENT `...\n\
-\n\
-> Storing output into ` complex `\n\
-\n\
-> Finished execution of ` ASSIGNMENT `:\n\
-```\n\
-{"b":17,"d":"new value"}\n\
-```\n\
-\n\
-## Final State:\n\
-\n\
-```\n\
-{\n\
-  "complex": {\n\
-    "a": 1,\n\
-    "b": 17,\n\
-    "c": 3,\n\
-    "d": "new value"\n\
-  },\n\
-  "value": "new value"\n\
-}\n\
-```\n\
-'
-};
+  expected: `# Started batch process
+
+## Initial State:
+
+\`\`\`
+{
+  "complex": {
+    "a": 1,
+    "b": 2,
+    "c": 3
+  },
+  "value": "original"
+}
+\`\`\`
+
+## Execution
+
+
+### Executing \`\` echo A-\${value} \`\`...
+
+> Finished execution of \`\` echo A-\${value} \`\`:
+\`\`\`
+A-original
+\`\`\`
+
+### Executing \`\` ASSIGNMENT \`\`...
+
+> Storing output into \`\` value \`\`
+
+> Finished execution of \`\` ASSIGNMENT \`\`:
+\`\`\`
+42
+\`\`\`
+
+### Executing \`\` echo B-\${value} \`\`...
+
+> Finished execution of \`\` echo B-\${value} \`\`:
+\`\`\`
+B-42
+\`\`\`
+
+### Executing \`\` VALUE SETTER \`\`...
+
+> Storing output into \`\` value \`\`
+
+> Finished execution of \`\` VALUE SETTER \`\`:
+\`\`\`
+new value
+\`\`\`
+
+### Executing \`\` VALUE SETTER \`\`...
+
+> Finished execution of \`\` VALUE SETTER \`\`:
+\`\`\`
+goes nowhere
+\`\`\`
+
+### Executing \`\` ASSIGNMENT \`\`...
+
+> Storing output into \`\` complex \`\`
+
+> Finished execution of \`\` ASSIGNMENT \`\`:
+\`\`\`
+{"b":17,"d":"new value"}
+\`\`\`
+
+## Final State:
+
+\`\`\`
+{
+  "complex": {
+    "a": 1,
+    "b": 17,
+    "c": 3,
+    "d": "new value"
+  },
+  "value": "new value"
+}
+\`\`\`
+`};
