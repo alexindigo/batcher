@@ -91,10 +91,10 @@ A\n\
 ### Executing `` [sleep 1, error-here] ``...\n\
 \n\
 \n\
-### Executing `` function (cb) { var id = setTimeout(function() ... }; } ``...\n\
-\n\
-\n\
 ### Executing `` function (cb) { setTimeout(function() ... }, 2000); } ``...\n\
+\n\
+\n\
+### Executing `` function (cb) { var id = setTimeout(function() ... }; } ``...\n\
 \n\
 > Finished execution of `` echo Z ``:\n\
 ```\n\
