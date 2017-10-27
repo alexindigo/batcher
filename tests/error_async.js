@@ -9,29 +9,29 @@ var posixExpected = '# Started batch process\n\
 ## Execution\n\
 \n\
 \n\
-### Executing ` echo A `...\n\
+### Executing `` echo A ``...\n\
 \n\
-> Finished execution of ` echo A `:\n\
+> Finished execution of `` echo A ``:\n\
 ```\n\
 A\n\
 ```\n\
 \n\
-### Executing ` echo Z `...\n\
+### Executing `` echo Z ``...\n\
 \n\
 \n\
-### Executing ` [sleep 1, error-here] `...\n\
+### Executing `` [sleep 1, error-here] ``...\n\
 \n\
 \n\
-### Executing ` CUSTOM ASYNC FUNCTION `...\n\
+### Executing `` function (cb) { setTimeout(function() ... }, 2000); } ``...\n\
 \n\
 \n\
-### Executing ` CUSTOM ASYNC FUNCTION `...\n\
+### Executing `` function (cb) { var id = setTimeout(function() ... }; } ``...\n\
 \n\
-> Finished execution of ` echo Z `:\n\
+> Finished execution of `` echo Z ``:\n\
 ```\n\
 Z\n\
 ```\n\
-> Failed to execute ` [sleep 1, error-here] `:\n\
+> Failed to execute `` [sleep 1, error-here] ``:\n\
 ```\n\
 {\n\
   "killed": false,\n\
@@ -43,9 +43,9 @@ Z\n\
 }\n\
 ```\n\
 \n\
-~~ Command ` CUSTOM ASYNC FUNCTION ` has been terminated. ~~\n\
+~~ Command `` function (cb) { var id = setTimeout(function() ... }; } `` has been terminated. ~~\n\
 \n\
-~~ Command ` CUSTOM ASYNC FUNCTION ` has been terminated. ~~\n\
+~~ Command `` function (cb) { setTimeout(function() ... }, 2000); } `` has been terminated. ~~\n\
 \n\
 ## Finished with errors:\n\
 \n\
@@ -78,29 +78,29 @@ var win32Expected = '# Started batch process\n\
 ## Execution\n\
 \n\
 \n\
-### Executing ` echo A `...\n\
+### Executing `` echo A ``...\n\
 \n\
-> Finished execution of ` echo A `:\n\
+> Finished execution of `` echo A ``:\n\
 ```\n\
 A\n\
 ```\n\
 \n\
-### Executing ` echo Z `...\n\
+### Executing `` echo Z ``...\n\
 \n\
 \n\
-### Executing ` [sleep 1, error-here] `...\n\
+### Executing `` [sleep 1, error-here] ``...\n\
 \n\
 \n\
-### Executing ` CUSTOM ASYNC FUNCTION `...\n\
+### Executing `` function (cb) { setTimeout(function() ... }, 2000); } ``...\n\
 \n\
 \n\
-### Executing ` CUSTOM ASYNC FUNCTION `...\n\
+### Executing `` function (cb) { var id = setTimeout(function() ... }; } ``...\n\
 \n\
-> Finished execution of ` echo Z `:\n\
+> Finished execution of `` echo Z ``:\n\
 ```\n\
 Z\n\
 ```\n\
-> Failed to execute ` [sleep 1, error-here] `:\n\
+> Failed to execute `` [sleep 1, error-here] ``:\n\
 ```\n\
 {\n\
   "killed": false,\n\
@@ -112,9 +112,9 @@ Z\n\
 }\n\
 ```\n\
 \n\
-~~ Command ` CUSTOM ASYNC FUNCTION ` has been terminated. ~~\n\
+~~ Command `` function (cb) { var id = setTimeout(function() ... }; } `` has been terminated. ~~\n\
 \n\
-~~ Command ` CUSTOM ASYNC FUNCTION ` has been terminated. ~~\n\
+~~ Command `` function (cb) { setTimeout(function() ... }, 2000); } `` has been terminated. ~~\n\
 \n\
 ## Finished with errors:\n\
 \n\
@@ -159,13 +159,13 @@ module.exports =
       // function needs to be defined with an argument
       // to signal that it's async capable
       // but eslint complaining
-      function(cb) //eslint-disable-line no-unused-vars
+      function(cb) // eslint-disable-line no-unused-vars
       {
         var id = setTimeout(function()
         {
           throw new Error('Should be cancelled.');
 
-          // cb('will not get here');
+          cb('will not get here'); // eslint-disable-line no-unreachable
         }, 1500);
 
         return function terminate()

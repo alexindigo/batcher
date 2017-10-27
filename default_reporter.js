@@ -29,7 +29,7 @@ module.exports =
    */
   start: function(state, command)
   {
-    console.log('\n### Executing `', command, '`' + withCmdPrefix(state) + '...\n');
+    console.log('\n### Executing ``', command, '``' + withCmdPrefix(state) + '...\n');
   },
 
   /**
@@ -42,7 +42,7 @@ module.exports =
    */
   error: function(state, command, error)
   {
-    console.log('> Failed to execute `', command, '`' + withCmdPrefix(state) + ':');
+    console.log('> Failed to execute ``', command, '``' + withCmdPrefix(state) + ':');
     console.log('```');
     console.log(JSON.stringify(error, null, 2));
     console.log('```');
@@ -50,7 +50,7 @@ module.exports =
 
   killed: function(state, command)
   {
-    console.log('\n~~ Command `', command, '`' + withCmdPrefix(state) + ' has been terminated. ~~');
+    console.log('\n~~ Command ``', command, '``' + withCmdPrefix(state) + ' has been terminated. ~~');
   },
 
   /**
@@ -63,7 +63,7 @@ module.exports =
    */
   output: function(state, command, output)
   {
-    console.log('> Finished execution of `', command, '`' + withCmdPrefix(state) + ':');
+    console.log('> Finished execution of ``', command, '``' + withCmdPrefix(state) + ':');
     if (!Array.isArray(output)) output = [output];
     console.log('```');
     console.log(output.map(format).join('\n'));
@@ -80,7 +80,7 @@ module.exports =
    */
   store: function(state, command, key)
   {
-    console.log('> Storing output into `', key, '`\n');
+    console.log('> Storing output into ``', key, '``\n');
   },
 
   /**
@@ -168,7 +168,7 @@ function withCmdPrefix(state)
 
   if (state.options && state.options.cmdPrefix)
   {
-    prefix = ' with `' + state.options.cmdPrefix + '` prefix';
+    prefix = ' with ``' + state.options.cmdPrefix + '`` prefix';
   }
 
   return prefix || '';

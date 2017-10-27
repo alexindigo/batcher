@@ -1,0 +1,11 @@
+{
+  "extends": "../.eslintrc",
+  "rules": {
+    "max-len": ["error", 360],
+
+    "arrow-parens": "off",
+    "no-multi-str": "off",
+    "no-template-curly-in-string": "off",
+    "no-undefined": "off"
+  }
+}

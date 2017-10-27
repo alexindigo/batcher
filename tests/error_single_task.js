@@ -5,38 +5,37 @@ module.exports =
     undefined
   ],
 
-  expected: '# Started batch process\n\
-\n\
-## Initial State:\n\
-\n\
-```\n\
-{}\n\
-```\n\
-\n\
-## Execution\n\
-\n\
-\n\
-### Executing ` undefined `...\n\
-\n\
-> Failed to execute ` undefined `:\n\
-```\n\
-{\n\
-  "message": "Unsupported command type: [undefined] undefined"\n\
-}\n\
-```\n\
-\n\
-## Finished with errors:\n\
-\n\
-```\n\
-{\n\
-  "message": "Unsupported command type: [undefined] undefined"\n\
-}\n\
-```\n\
-\n\
-## Final State:\n\
-\n\
-```\n\
-{}\n\
-```\n\
-'
-};
+  expected: `# Started batch process
+
+## Initial State:
+
+\`\`\`
+{}
+\`\`\`
+
+## Execution
+
+
+### Executing \`\` undefined \`\`...
+
+> Failed to execute \`\` undefined \`\`:
+\`\`\`
+{
+  "message": "Unsupported command type: [undefined] undefined"
+}
+\`\`\`
+
+## Finished with errors:
+
+\`\`\`
+{
+  "message": "Unsupported command type: [undefined] undefined"
+}
+\`\`\`
+
+## Final State:
+
+\`\`\`
+{}
+\`\`\`
+`};

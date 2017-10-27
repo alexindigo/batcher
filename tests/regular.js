@@ -66,6 +66,15 @@ module.exports =
     function(cb)
     {
       cb(null);
+    },
+
+    // arrow function
+    context => `${context.acustom} > ${context.user}`,
+
+    // asynchronous arrow function
+    (context, cb) =>
+    {
+      cb(null, context.internal);
     }
   ],
 
@@ -76,126 +85,140 @@ module.exports =
     console.log('DONE', JSON.stringify(state, null, 2)); // eslint-disable-line no-console
   },
 
-  expected: '# Started batch process\n\
-\n\
-## Initial State:\n\
-\n\
-```\n\
-{\n\
-  "field": "value",\n\
-  "nay": null,\n\
-  "no": false,\n\
-  "user": "test",\n\
-  "yes": true\n\
-}\n\
-```\n\
-\n\
-## Execution\n\
-\n\
-\n\
-### Executing ` echo A `...\n\
-\n\
-> Finished execution of ` echo A `:\n\
-```\n\
-A\n\
-```\n\
-\n\
-### Executing ` [echo A, echo B] `...\n\
-\n\
-\n\
-### Executing ` [echo W, echo X, echo Y, echo Z] `...\n\
-\n\
-> Finished execution of ` [echo A, echo B] `:\n\
-```\n\
-A\n\
-B\n\
-```\n\
-> Finished execution of ` [echo W, echo X, echo Y, echo Z] `:\n\
-```\n\
-W\n\
-X\n\
-Y\n\
-Z\n\
-```\n\
-\n\
-### Executing ` {"prefixed":"echo output"} `...\n\
-\n\
-> Finished execution of ` {"prefixed":"echo output"} `:\n\
-```\n\
-prefixed: output\n\
-```\n\
-\n\
-### Executing ` echo xxx-${user}-zzz `...\n\
-\n\
-> Finished execution of ` echo xxx-${user}-zzz `:\n\
-```\n\
-xxx-test-zzz\n\
-```\n\
-\n\
-### Executing ` ls | wc -l `...\n\
-\n\
-> Storing output into ` numTestSuites `\n\
-\n\
-> Finished execution of ` ls | wc -l `:\n\
-```\n\
-' + numberOfTestFiles + '\n\
-```\n\
-\n\
-### Executing ` CUSTOM SYNC FUNCTION `...\n\
-\n\
-> Finished execution of ` CUSTOM SYNC FUNCTION `:\n\
-```\n\
-Assigned 13 to `this.custom`\n\
-```\n\
-\n\
-### Executing ` CUSTOM SYNC FUNCTION `...\n\
-\n\
-> Storing output into ` internal `\n\
-\n\
-> Finished execution of ` CUSTOM SYNC FUNCTION `:\n\
-```\n\
-26\n\
-```\n\
-\n\
-### Executing ` CUSTOM SYNC FUNCTION `...\n\
-\n\
-> Finished execution of ` CUSTOM SYNC FUNCTION `:\n\
-```\n\
-\n\
-```\n\
-\n\
-### Executing ` CUSTOM ASYNC FUNCTION `...\n\
-\n\
-> Finished execution of ` CUSTOM ASYNC FUNCTION `:\n\
-```\n\
-Assigned 42 to `this.acustom`\n\
-```\n\
-\n\
-### Executing ` CUSTOM ASYNC FUNCTION `...\n\
-\n\
-> Finished execution of ` CUSTOM ASYNC FUNCTION `:\n\
-```\n\
-internal: 42\n\
-```\n\
-\n\
-### Executing ` CUSTOM ASYNC FUNCTION `...\n\
-\n\
-> Finished execution of ` CUSTOM ASYNC FUNCTION `:\n\
-```\n\
-\n\
-```\n\
-DONE {\n\
-  "nay": null,\n\
-  "no": false,\n\
-  "yes": true,\n\
-  "user": "test",\n\
-  "field": "value",\n\
-  "options": {\n\
-    "cwd": "tests/"\n\
-  },\n\
-  "numTestSuites": "' + numberOfTestFiles + '",\n\
-  "custom": 13,\n\
-  "internal": 26,\n\
-  "acustom": 42\n\
-}\n\
-'};
+  expected: `# Started batch process
+
+## Initial State:
+
+\`\`\`
+{
+  "field": "value",
+  "nay": null,
+  "no": false,
+  "user": "test",
+  "yes": true
+}
+\`\`\`
+
+## Execution
+
+
+### Executing \`\` echo A \`\`...
+
+> Finished execution of \`\` echo A \`\`:
+\`\`\`
+A
+\`\`\`
+
+### Executing \`\` [echo A, echo B] \`\`...
+
+
+### Executing \`\` [echo W, echo X, echo Y, echo Z] \`\`...
+
+> Finished execution of \`\` [echo A, echo B] \`\`:
+\`\`\`
+A
+B
+\`\`\`
+> Finished execution of \`\` [echo W, echo X, echo Y, echo Z] \`\`:
+\`\`\`
+W
+X
+Y
+Z
+\`\`\`
+
+### Executing \`\` {"prefixed":"echo output"} \`\`...
+
+> Finished execution of \`\` {"prefixed":"echo output"} \`\`:
+\`\`\`
+prefixed: output
+\`\`\`
+
+### Executing \`\` echo xxx-\${user}-zzz \`\`...
+
+> Finished execution of \`\` echo xxx-\${user}-zzz \`\`:
+\`\`\`
+xxx-test-zzz
+\`\`\`
+
+### Executing \`\` ls | wc -l \`\`...
+
+> Storing output into \`\` numTestSuites \`\`
+
+> Finished execution of \`\` ls | wc -l \`\`:
+\`\`\`
+${numberOfTestFiles}
+\`\`\`
+
+### Executing \`\` function () { this.custom = 13; return 'Assigned 13 to \`this.custom\`'; } \`\`...
+
+> Finished execution of \`\` function () { this.custom = 13; return 'Assigned 13 to \`this.custom\`'; } \`\`:
+\`\`\`
+Assigned 13 to \`this.custom\`
+\`\`\`
+
+### Executing \`\` function () { return this.custom * 2; } \`\`...
+
+> Storing output into \`\` internal \`\`
+
+> Finished execution of \`\` function () { return this.custom * 2; } \`\`:
+\`\`\`
+26
+\`\`\`
+
+### Executing \`\` function () { } \`\`...
+
+> Finished execution of \`\` function () { } \`\`:
+\`\`\`
+
+\`\`\`
+
+### Executing \`\` function (cb) { this.acustom = 42; cb(null, 'Assigned 42 to \`this.acustom\`'); } \`\`...
+
+> Finished execution of \`\` function (cb) { this.acustom = 42; cb(null, 'Assigned 42 to \`this.acustom\`'); } \`\`:
+\`\`\`
+Assigned 42 to \`this.acustom\`
+\`\`\`
+
+### Executing \`\` function (cb) { this.run('echo \${acustom}', function(err, data) ... }); } \`\`...
+
+> Finished execution of \`\` function (cb) { this.run('echo \${acustom}', function(err, data) ... }); } \`\`:
+\`\`\`
+internal: 42
+\`\`\`
+
+### Executing \`\` function (cb) { cb(null); } \`\`...
+
+> Finished execution of \`\` function (cb) { cb(null); } \`\`:
+\`\`\`
+
+\`\`\`
+
+### Executing \`\` context => \`\${context.acustom} > \${context.user}\` \`\`...
+
+> Finished execution of \`\` context => \`\${context.acustom} > \${context.user}\` \`\`:
+\`\`\`
+42 > test
+\`\`\`
+
+### Executing \`\` (context, cb) => { cb(null, context.internal); } \`\`...
+
+> Finished execution of \`\` (context, cb) => { cb(null, context.internal); } \`\`:
+\`\`\`
+26
+\`\`\`
+DONE {
+  "nay": null,
+  "no": false,
+  "yes": true,
+  "user": "test",
+  "field": "value",
+  "options": {
+    "cwd": "tests/"
+  },
+  "numTestSuites": "${numberOfTestFiles}",
+  "custom": 13,
+  "internal": 26,
+  "acustom": 42
+}
+`};

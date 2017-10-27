@@ -1,3 +1,5 @@
+/* eslint no-template-curly-in-string: "off", arrow-parens: "off", no-path-concat: "off" */
+
 var batcher    = require('./');
 
 var cdnServers = ['image1', 'image2'];
@@ -39,10 +41,13 @@ batcher({
 
   // stores custom function output within state
   // creates hook command
-  {hook: function(){ return 'echo "<${user}> with node: ${node}"'; }},
+  {hook: function() { return 'echo "<${user}> with node: ${node}"'; }},
+
+  // passes `context` argument to the arrow functions
+  {os: context => context.versions.os},
 
   // execute command from state object
-  {result: batcher.command('hook') },
+  {result: batcher.command('hook')},
 
   // modifying state directly in turn with commands
   'echo "1. ${myValue}"',
@@ -84,11 +89,22 @@ batcher({
     }.bind(this));
   },
 
+  // asynchronous arrow function
+  // passes conext and callback as a second argument
+  (context, cb) =>
+  {
+    cb(null, context.versions.node);
+  },
+
   // sync function
   function()
   {
     return 'ABC + ' + this.custom + ' + XYZ';
   },
+
+  // synchronous arrow function
+  // stores returned result
+  {newValue: context => `${context.newList[0]} and ${context.hook}`},
 
   // execute commands with common prefix
   // e.g. `ssh my-server`

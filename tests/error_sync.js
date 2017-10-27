@@ -22,60 +22,59 @@ module.exports =
         this.happened = 'Modified state before throwing up';
 
         // report error from within sync function
-        throw 'Sync functions throw instead of passing error into callback.';
+        throw new Error('Sync functions throw instead of passing error into callback.');
       }
     ],
 
     'should not get here'
   ],
 
-  expected: '# Started batch process\n\
-\n\
-## Initial State:\n\
-\n\
-```\n\
-{}\n\
-```\n\
-\n\
-## Execution\n\
-\n\
-\n\
-### Executing ` echo A `...\n\
-\n\
-> Finished execution of ` echo A `:\n\
-```\n\
-A\n\
-```\n\
-\n\
-### Executing ` echo Z `...\n\
-\n\
-\n\
-### Executing ` CUSTOM ASYNC FUNCTION `...\n\
-\n\
-\n\
-### Executing ` CUSTOM SYNC FUNCTION `...\n\
-\n\
-> Failed to execute ` CUSTOM SYNC FUNCTION `:\n\
-```\n\
-"Sync functions throw instead of passing error into callback."\n\
-```\n\
-\n\
-~~ Command ` CUSTOM ASYNC FUNCTION ` has been terminated. ~~\n\
-\n\
-~~ Command ` echo Z ` has been terminated. ~~\n\
-\n\
-## Finished with errors:\n\
-\n\
-```\n\
-"Sync functions throw instead of passing error into callback."\n\
-```\n\
-\n\
-## Final State:\n\
-\n\
-```\n\
-{\n\
-  "happened": "Modified state before throwing up"\n\
-}\n\
-```\n\
-'
-};
+  expected: `# Started batch process
+
+## Initial State:
+
+\`\`\`
+{}
+\`\`\`
+
+## Execution
+
+
+### Executing \`\` echo A \`\`...
+
+> Finished execution of \`\` echo A \`\`:
+\`\`\`
+A
+\`\`\`
+
+### Executing \`\` echo Z \`\`...
+
+
+### Executing \`\` function (cb) { setTimeout(function() ... }, 2500); } \`\`...
+
+
+### Executing \`\` function () { this.happened = 'Modified state before throwing up';  throw new Error('Sync functions throw instead of passing error into callback.'); } \`\`...
+
+> Failed to execute \`\` function () { this.happened = 'Modified state before throwing up';  throw new Error('Sync functions throw instead of passing error into callback.'); } \`\`:
+\`\`\`
+{}
+\`\`\`
+
+~~ Command \`\` function (cb) { setTimeout(function() ... }, 2500); } \`\` has been terminated. ~~
+
+~~ Command \`\` echo Z \`\` has been terminated. ~~
+
+## Finished with errors:
+
+\`\`\`
+{}
+\`\`\`
+
+## Final State:
+
+\`\`\`
+{
+  "happened": "Modified state before throwing up"
+}
+\`\`\`
+`};

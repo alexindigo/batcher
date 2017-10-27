@@ -7,43 +7,42 @@ module.exports =
     'never-gets-a-chance'
   ],
 
-  expected: '# Started batch process\n\
-\n\
-## Initial State:\n\
-\n\
-```\n\
-{}\n\
-```\n\
-\n\
-## Execution\n\
-\n\
-\n\
-### Executing ` echo ABC `...\n\
-\n\
-\n\
-### Executing ` 42 `...\n\
-\n\
-> Failed to execute ` 42 `:\n\
-```\n\
-{\n\
-  "message": "Unsupported command type: [number] 42"\n\
-}\n\
-```\n\
-\n\
-~~ Command ` echo ABC ` has been terminated. ~~\n\
-\n\
-## Finished with errors:\n\
-\n\
-```\n\
-{\n\
-  "message": "Unsupported command type: [number] 42"\n\
-}\n\
-```\n\
-\n\
-## Final State:\n\
-\n\
-```\n\
-{}\n\
-```\n\
-'
-};
+  expected: `# Started batch process
+
+## Initial State:
+
+\`\`\`
+{}
+\`\`\`
+
+## Execution
+
+
+### Executing \`\` echo ABC \`\`...
+
+
+### Executing \`\` 42 \`\`...
+
+> Failed to execute \`\` 42 \`\`:
+\`\`\`
+{
+  "message": "Unsupported command type: [number] 42"
+}
+\`\`\`
+
+~~ Command \`\` echo ABC \`\` has been terminated. ~~
+
+## Finished with errors:
+
+\`\`\`
+{
+  "message": "Unsupported command type: [number] 42"
+}
+\`\`\`
+
+## Final State:
+
+\`\`\`
+{}
+\`\`\`
+`};

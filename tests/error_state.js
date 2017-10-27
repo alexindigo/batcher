@@ -7,10 +7,10 @@ module.exports =
     'never-gets-a-chance'
   ],
 
-  exception: function(e)
+  exception: function(ex)
   {
     // expect to catch only type error
-    return e instanceof TypeError && e.message == 'Initial state should be an object';
+    return ex instanceof TypeError && ex.message == 'Initial state should be an object';
   },
 
   expected: ''

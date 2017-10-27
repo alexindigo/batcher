@@ -2,9 +2,9 @@
 
 Batch processor of shell commands and javascript functions over shared state object. Async, sequential, parallel.
 
-[![Linux Build](https://img.shields.io/travis/alexindigo/batcher/master.svg?label=linux:0.12-7.x&style=flat)](https://travis-ci.org/alexindigo/batcher)
-[![MacOS Build](https://img.shields.io/travis/alexindigo/batcher/master.svg?label=macos:0.12-7.x&style=flat)](https://travis-ci.org/alexindigo/batcher)
-[![Windows Build](https://img.shields.io/appveyor/ci/alexindigo/batcher/master.svg?label=windows:0.12-7.x&style=flat)](https://ci.appveyor.com/project/alexindigo/batcher)
+[![Linux Build](https://img.shields.io/travis/alexindigo/batcher/master.svg?label=linux:4.x-8.x&style=flat)](https://travis-ci.org/alexindigo/batcher)
+[![MacOS Build](https://img.shields.io/travis/alexindigo/batcher/master.svg?label=macos:4.x-8.x&style=flat)](https://travis-ci.org/alexindigo/batcher)
+[![Windows Build](https://img.shields.io/appveyor/ci/alexindigo/batcher/master.svg?label=windows:4.x-8.x&style=flat)](https://ci.appveyor.com/project/alexindigo/batcher)
 
 [![Coverage Status](https://img.shields.io/coveralls/alexindigo/batcher/master.svg?style=flat)](https://coveralls.io/github/alexindigo/batcher?branch=master)
 [![Dependency Status](https://img.shields.io/david/alexindigo/batcher/master.svg?style=flat)](https://david-dm.org/alexindigo/batcher)
@@ -68,6 +68,14 @@ batcher({
   function(cb)
   {
     cb(null, this.twoWords.substr(0, 8));
+  },
+
+  // for arrow functions it passes context as first argument
+  { newWord: context => `${context.word}/${context.word}` },
+
+  // same goes for asynchronous arrow functions
+  (context, cb) => {
+    cb(null, context.newWord.split('/'))
   }
 ]);
 ```
@@ -87,74 +95,95 @@ Outputs (*with default reporter*):
     ## Execution
 
 
-    ### Executing ` echo A `...
+    ### Executing `` echo A ``...
 
-    > Finished execution of ` echo A `:
+    > Finished execution of `` echo A ``:
     ```
     A
     ```
 
-    ### Executing ` echo word is ${word} `...
+    ### Executing `` echo word is ${word} ``...
 
-    > Finished execution of ` echo word is ${word} `:
+    > Finished execution of `` echo word is ${word} ``:
     ```
     word is ABC
     ```
 
-    ### Executing ` echo ${word} + ${word} `...
+    ### Executing `` echo ${word} + ${word} ``...
 
-    > Storing output into ` twoWords `
+    > Storing output into `` twoWords ``
 
-    > Finished execution of ` echo ${word} + ${word} `:
+    > Finished execution of `` echo ${word} + ${word} ``:
     ```
     ABC + ABC
     ```
 
-    ### Executing ` echo two words are ${twoWords} `...
+    ### Executing `` echo two words are ${twoWords} ``...
 
-    > Finished execution of ` echo two words are ${twoWords} `:
+    > Finished execution of `` echo two words are ${twoWords} ``:
     ```
     two words are ABC + ABC
     ```
 
-    ### Executing ` echo Marco `...
+    ### Executing `` echo Marco ``...
 
 
-    ### Executing ` echo Polo `...
+    ### Executing `` echo Polo ``...
 
-    > Finished execution of ` echo Polo `:
-    ```
-    Polo
-    ```
-    > Finished execution of ` echo Marco `:
+    > Finished execution of `` echo Marco ``:
     ```
     Marco
     ```
+    > Finished execution of `` echo Polo ``:
+    ```
+    Polo
+    ```
 
-    ### Executing ` CUSTOM SYNC FUNCTION `...
+    ### Executing `` function () { return this.twoWords.substr(0, 5); } ``...
 
-    > Finished execution of ` CUSTOM SYNC FUNCTION `:
+    > Finished execution of `` function () { return this.twoWords.substr(0, 5); } ``:
     ```
     ABC +
     ```
 
-    ### Executing ` CUSTOM ASYNC FUNCTION `...
+    ### Executing `` function (cb) { cb(null, this.twoWords.substr(0, 8)); } ``...
 
-    > Finished execution of ` CUSTOM ASYNC FUNCTION `:
+    > Finished execution of `` function (cb) { cb(null, this.twoWords.substr(0, 8)); } ``:
     ```
     ABC + AB
+    ```
+
+    ### Executing `` context => `${context.word}/${context.word}` ``...
+
+    > Storing output into `` newWord ``
+
+    > Finished execution of `` context => `${context.word}/${context.word}` ``:
+    ```
+    ABC/ABC
+    ```
+
+    ### Executing `` (context, cb) => { cb(null, context.newWord.split('/')) } ``...
+
+    > Finished execution of `` (context, cb) => { cb(null, context.newWord.split('/')) } ``:
+    ```
+    ABC
+    ABC
     ```
 
     ## Final State:
 
     ```
     {
-      "word": "ABC",
-      "twoWords": "ABC + ABC"
+      "newWord": "ABC/ABC",
+      "twoWords": "ABC + ABC",
+      "word": "ABC"
     }
     ```
 
-For more examples check out [`example.js`](example.js) and [`example.md`](example.md) for default output.
+
+
+For more examples check out [`example.js`](example.js) and [`example.md`](example.md) for default output,
+and [`tests`](tests) folder for advanced usage examples.
 
 ## License
 

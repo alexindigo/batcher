@@ -1,6 +1,8 @@
-/* eslint no-console:0 */
+/* eslint no-console: "off" */
 
-var inspect = require('util').inspect;
+var inspect = require('util').inspect
+  , customReporter
+  ;
 
 /**
  * Abstracts function printing,
@@ -37,48 +39,48 @@ function formatOutput(data)
   return inspect(data).replace(/\r/g, '');
 }
 
-var customReporter =
+customReporter =
+{
+  init: function(state)
   {
-    init: function(state)
-    {
-      console.log('init:', formatOutput(state));
-    },
+    console.log('init:', formatOutput(state));
+  },
 
-    start: function(state, command)
-    {
-      console.log('start:', command);
-    },
+  start: function(state, command)
+  {
+    console.log('start:', command);
+  },
 
-    error: function(state, command, error)
-    {
-      console.log('error:', command, error);
-    },
+  error: function(state, command, error)
+  {
+    console.log('error:', command, error);
+  },
 
-    killed: function(state, command)
-    {
-      console.log('killed:', command);
-    },
+  killed: function(state, command)
+  {
+    console.log('killed:', command);
+  },
 
-    output: function(state, command, output)
-    {
-      console.log('output:', command, output);
-    },
+  output: function(state, command, output)
+  {
+    console.log('output:', command, output);
+  },
 
-    store: function(state, command, key)
-    {
-      console.log('store:', command, key);
-    },
+  store: function(state, command, key)
+  {
+    console.log('store:', command, key);
+  },
 
-    done: function(state, error)
+  done: function(state, error)
+  {
+    if (error)
     {
-      if (error)
-      {
-        console.log('last error:', formatOutput(error));
-      }
-
-      console.log('done:', formatOutput(state));
+      console.log('last error:', formatOutput(error));
     }
-  };
+
+    console.log('done:', formatOutput(state));
+  }
+};
 
 module.exports =
 {

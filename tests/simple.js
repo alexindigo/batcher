@@ -13,78 +13,78 @@ module.exports =
     [['echo A', 'echo B'], ['echo W', 'echo X', 'echo Y', 'echo Z']]
   ],
 
-  expected: '# Started batch process\n\
-\n\
-## Initial State:\n\
-\n\
-```\n\
-{}\n\
-```\n\
-\n\
-## Execution\n\
-\n\
-\n\
-### Executing ` echo A `...\n\
-\n\
-> Finished execution of ` echo A `:\n\
-```\n\
-A\n\
-```\n\
-\n\
-### Executing ` echo ABC `...\n\
-\n\
-\n\
-### Executing ` [echo KLM, echo XYZ] `...\n\
-\n\
-> Finished execution of ` echo ABC `:\n\
-```\n\
-ABC\n\
-```\n\
-> Finished execution of ` [echo KLM, echo XYZ] `:\n\
-```\n\
-KLM\n\
-XYZ\n\
-```\n\
-\n\
-### Executing ` echo alex `...\n\
-\n\
-> Storing output into ` user `\n\
-\n\
-> Finished execution of ` echo alex `:\n\
-```\n\
-alex\n\
-```\n\
-\n\
-### Executing ` echo xxx-${user}-zzz `...\n\
-\n\
-> Finished execution of ` echo xxx-${user}-zzz `:\n\
-```\n\
-xxx-alex-zzz\n\
-```\n\
-\n\
-### Executing ` [echo A, echo B] `...\n\
-\n\
-\n\
-### Executing ` [echo W, echo X, echo Y, echo Z] `...\n\
-\n\
-> Finished execution of ` [echo A, echo B] `:\n\
-```\n\
-A\n\
-B\n\
-```\n\
-> Finished execution of ` [echo W, echo X, echo Y, echo Z] `:\n\
-```\n\
-W\n\
-X\n\
-Y\n\
-Z\n\
-```\n\
-\n\
-## Final State:\n\
-\n\
-```\n\
-{\n\
-  "user": "alex"\n\
-}\n\
-```\n\
-'};
+  expected: `# Started batch process
+
+## Initial State:
+
+\`\`\`
+{}
+\`\`\`
+
+## Execution
+
+
+### Executing \`\` echo A \`\`...
+
+> Finished execution of \`\` echo A \`\`:
+\`\`\`
+A
+\`\`\`
+
+### Executing \`\` echo ABC \`\`...
+
+
+### Executing \`\` [echo KLM, echo XYZ] \`\`...
+
+> Finished execution of \`\` echo ABC \`\`:
+\`\`\`
+ABC
+\`\`\`
+> Finished execution of \`\` [echo KLM, echo XYZ] \`\`:
+\`\`\`
+KLM
+XYZ
+\`\`\`
+
+### Executing \`\` echo alex \`\`...
+
+> Storing output into \`\` user \`\`
+
+> Finished execution of \`\` echo alex \`\`:
+\`\`\`
+alex
+\`\`\`
+
+### Executing \`\` echo xxx-\${user}-zzz \`\`...
+
+> Finished execution of \`\` echo xxx-\${user}-zzz \`\`:
+\`\`\`
+xxx-alex-zzz
+\`\`\`
+
+### Executing \`\` [echo A, echo B] \`\`...
+
+
+### Executing \`\` [echo W, echo X, echo Y, echo Z] \`\`...
+
+> Finished execution of \`\` [echo A, echo B] \`\`:
+\`\`\`
+A
+B
+\`\`\`
+> Finished execution of \`\` [echo W, echo X, echo Y, echo Z] \`\`:
+\`\`\`
+W
+X
+Y
+Z
+\`\`\`
+
+## Final State:
+
+\`\`\`
+{
+  "user": "alex"
+}
+\`\`\`
+`};
