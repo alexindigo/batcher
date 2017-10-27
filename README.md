@@ -8,7 +8,6 @@ Batch processor of shell commands and javascript functions over shared state obj
 
 [![Coverage Status](https://img.shields.io/coveralls/alexindigo/batcher/master.svg?style=flat)](https://coveralls.io/github/alexindigo/batcher?branch=master)
 [![Dependency Status](https://img.shields.io/david/alexindigo/batcher/master.svg?style=flat)](https://david-dm.org/alexindigo/batcher)
-[![bitHound Overall Score](https://www.bithound.io/github/alexindigo/batcher/badges/score.svg)](https://www.bithound.io/github/alexindigo/batcher)
 
 *Notice of change of ownership: Starting version 1.0.0 this package has changed it's owner and goals. Old version (0.0.2) is still available on npm via `npm install batcher@0.0.2`. Thank you.*
 
