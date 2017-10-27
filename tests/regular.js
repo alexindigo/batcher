@@ -66,6 +66,15 @@ module.exports =
     function(cb)
     {
       cb(null);
+    },
+
+    // arrow function
+    context => `${context.acustom} > ${context.user}`,
+
+    // asynchronous arrow function
+    (context, cb) =>
+    {
+      cb(null, context.internal);
     }
   ],
 
@@ -183,6 +192,20 @@ internal: 42
 > Finished execution of \`\` function (cb) { cb(null); } \`\`:
 \`\`\`
 
+\`\`\`
+
+### Executing \`\` context => \`\${context.acustom} > \${context.user}\` \`\`...
+
+> Finished execution of \`\` context => \`\${context.acustom} > \${context.user}\` \`\`:
+\`\`\`
+42 > test
+\`\`\`
+
+### Executing \`\` (context, cb) => { cb(null, context.internal); } \`\`...
+
+> Finished execution of \`\` (context, cb) => { cb(null, context.internal); } \`\`:
+\`\`\`
+26
 \`\`\`
 DONE {
   "nay": null,

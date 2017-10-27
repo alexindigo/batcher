@@ -6,7 +6,11 @@ module.exports =
 
     [['sleep 4 && echo D', 'sleep 3 && echo C', 'sleep 5 && echo E'], ['sleep 2 && echo B', 'sleep 1 && echo A']],
 
-    {second: 'sleep 1 && echo Second', first: function(cb) { setTimeout(function() { cb(null, 'First'); }, 500); }}
+    {
+      second: 'sleep 1 && echo Second',
+      first: function(cb) { setTimeout(function() { cb(null, 'First'); }, 500); },
+      third: context => `${context.nonExistent || 'Third'}`
+    }
   ],
 
   expected: `# Started batch process
@@ -77,6 +81,15 @@ E
 
 ### Executing \`\` function (cb) { setTimeout(function() { cb(null, 'First'); }, 500); } \`\`...
 
+
+### Executing \`\` context => \`\${context.nonExistent || 'Third'}\` \`\`...
+
+> Storing output into \`\` third \`\`
+
+> Finished execution of \`\` context => \`\${context.nonExistent || 'Third'}\` \`\`:
+\`\`\`
+Third
+\`\`\`
 > Storing output into \`\` first \`\`
 
 > Finished execution of \`\` function (cb) { setTimeout(function() { cb(null, 'First'); }, 500); } \`\`:
@@ -95,7 +108,8 @@ Second
 \`\`\`
 {
   "first": "First",
-  "second": "Second"
+  "second": "Second",
+  "third": "Third"
 }
 \`\`\`
 `};
